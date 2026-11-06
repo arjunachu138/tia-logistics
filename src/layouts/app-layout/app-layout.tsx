@@ -25,7 +25,7 @@ const navTitleMap: Record<string, string> = {
 const menuIcons = {
   invoices: icons.invoiceIcon,
   "load-tenders": icons.logiMenu,
-  configuration: icons.fileReportIcon,
+  configuration: icons.configMenu,
 };
 const AppLayout = () => {
   // api data

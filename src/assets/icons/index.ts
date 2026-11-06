@@ -37,6 +37,7 @@ import viewStatHisPrim from "./common/viewStatusHisPrim.svg";
 import cancelIcon from "./common/cancelIcon.svg";
 import email from "./common/emailIcon.svg";
 import invoDark from "./common/invoiceIconDark.svg";
+import configMenu from "./navigation/configIcon.svg";
 
 export const icons = {
   sidebarToggleIcon: sidebarToggleIcon,
@@ -47,6 +48,7 @@ export const icons = {
   fileReportIcon: fileReportIcon,
   logiMenu: logiIcon,
   logiMenuB: logiIconB,
+  configMenu: configMenu,
 
   downArrowIcon: downArrowIcon,
   downArrowIconB: downArrowIconB,
