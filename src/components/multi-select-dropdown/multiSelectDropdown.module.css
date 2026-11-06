@@ -1,0 +1,247 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-primary);
+}
+
+/* Label */
+.label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.required {
+  color: var(--color-error);
+}
+
+/* MUI FormControl */
+.formControl {
+  width: 100%;
+  font-family: var(--font-primary) !important;
+}
+
+/* MUI Select */
+.select {
+  width: 100%;
+  border-radius: 8px !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  color: var(--color-button-text) !important;
+  background-color: var(--color-surface) !important;
+}
+
+/* Select border */
+.select :global(.MuiOutlinedInput-notchedOutline) {
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+/* Hover */
+.select:hover :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: var(--color-input-hover);
+}
+
+/* Focus */
+.select:global(.Mui-focused) :global(.MuiOutlinedInput-notchedOutline) {
+  border: 1.5px solid var(--color-primary) !important;
+}
+
+/* Inner Select Padding - 36px right padding leaves room for arrow */
+.select :global(.MuiSelect-select) {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 6px 36px 6px 14px !important;
+  min-height: unset !important;
+  font-family: var(--font-primary) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Placeholder */
+.placeholder {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-sm);
+}
+
+/* Display Value Text */
+.displayValue {
+  color: var(--color-button-text);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Floating InputLabel if used */
+.inputLabel {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-medium) !important;
+  color: var(--color-text-primary) !important;
+}
+
+.inputLabel:global(.Mui-focused) {
+  color: var(--color-primary) !important;
+}
+
+/* Primary / Dark variant */
+.primary {
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.primary .select {
+  background-color: var(--color-primary) !important;
+  color: var(--color-text-inverse) !important;
+}
+
+.primary .select :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: var(--color-primary);
+}
+
+.primary:hover,
+.primary .select:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.primary .select:hover :global(.MuiOutlinedInput-notchedOutline) {
+  border-color: var(--color-primary-hover);
+}
+
+.primary .placeholder {
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+}
+
+.primary .displayValue {
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Dropdown Menu Paper */
+.menu {
+  min-width: 220px !important;
+  max-height: 320px !important;
+  background-color: var(--color-surface) !important;
+  border-radius: 8px !important;
+  box-shadow:
+    0 10px 15px 2px rgba(0, 0, 0, 0.08),
+    0 4px 6px 2px rgba(0, 0, 0, 0.05) !important;
+  padding: 4px 0 !important;
+  margin-top: 6px;
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Menu Items */
+.menuItem {
+  display: flex !important;
+  align-items: center !important;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 14px !important;
+  min-height: 38px !important;
+  border-bottom: 1px solid var(--color-border-primary) !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: var(--font-weight-regular) !important;
+  color: var(--color-text-primary) !important;
+  transition: background-color 0.15s ease;
+}
+
+.menuItem:last-child {
+  border-bottom: none !important;
+}
+
+/* Hover on item */
+.menuItem:hover {
+  background-color: var(--color-background) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Selected item state */
+.menuItem:global(.Mui-selected) {
+  background-color: var(--color-primary-lighter, #faf5ff) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  color: var(--color-primary) !important;
+}
+
+.menuItem:global(.Mui-selected):hover {
+  background-color: var(--color-primary-light) !important;
+}
+
+/* Select All Item */
+.selectAllItem {
+  border-bottom: 1.5px solid var(--color-border-primary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  background-color: var(--color-surface) !important;
+}
+
+/* Checkbox inside MenuItem */
+.checkbox {
+  padding: 0 8px 0 0 !important;
+  color: var(--color-border-secondary) !important;
+}
+
+.checkbox:global(.Mui-checked),
+.checkbox:global(.MuiCheckbox-indeterminate) {
+  color: var(--color-primary) !important;
+}
+
+/* ListItemText */
+.itemText :global(.MuiTypography-root) {
+  font-family: var(--font-primary) !important;
+  font-size: var(--font-size-sm) !important;
+  color: inherit !important;
+}
+
+/* Custom Dropdown arrow */
+/* .arrowIconWrapper {
+  position: absolute;
+  right: 14px;
+  top: calc(50% - 3px);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+} */
+.arrowIconWrapper {
+  position: absolute !important;
+  top: 50% !important;
+  right: 5px !important;
+
+  width: 20px !important;
+  height: 20px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  pointer-events: none !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transform: translateY(-50%) !important;
+  transition: transform 0.2s ease;
+}
+
+.arrowIconWrapper:global(.MuiSelect-iconOpen) {
+  transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.customArrow {
+  width: 10px;
+  height: 6px;
+  display: block;
+}

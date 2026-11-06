@@ -1,0 +1,68 @@
+.button {
+  position: relative;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.button img,
+.button svg {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  flex-shrink: 0;
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-button-primary-text);
+  font-weight: var(--font-weight-semibold);
+}
+.primary:hover {
+  background: var(--color-primary-hover);
+}
+.secondary {
+  background: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+  border-color: var(--color-button-secondary-border);
+}
+.green {
+  background-color: var(--button-green-bg) !important;
+  color: var(--button-green-text) !important;
+  border-color: var(--button-green-bg) !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+.outline {
+  background: transparent;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  border: 1px solid var(--color-primary);
+}
+
+.gray {
+  background: var(--color-button-gray-bg);
+  color: var(--color-button-gray-text);
+  border-color: var(--color-border-primary);
+}
+
+.ghost {
+  background: transparent;
+}
+
+.black {
+  background: transparent;
+  color: var(--color-dark);
+  font-weight: var(--font-weight-semibold) !important;
+  border: 1px solid var(--color-dark);
+}

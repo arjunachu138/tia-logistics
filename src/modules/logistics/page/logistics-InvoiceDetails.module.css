@@ -1,0 +1,608 @@
+/* ─── Page Wrapper ──────────────────────────────────────────────────────── */
+
+.poDetailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 40px;
+}
+
+/* ─── Header Card ───────────────────────────────────────────────────────── */
+
+.headerCard {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ─── Top Section ───────────────────────────────────────────────────────── */
+
+.topSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border-primary);
+  padding: 20px 0;
+  min-height: 57px;
+  gap: 16px;
+}
+
+.orderInfo {
+  padding: 0 20px 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.orderNumber {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--color-text-primary);
+  letter-spacing: -0.5px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.metaLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.metaValue {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+.divider {
+  width: 1px;
+  height: 22px;
+  background-color: var(--color-border-primary);
+}
+
+.purchaseOrderValue {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.customer {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  padding: 12px 16px;
+  background: var(--gradiant-purple-blue);
+  border-radius: 0 0 8px 8px;
+  color: #1c1c1c;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+/* ─── Bottom Section ────────────────────────────────────────────────────── */
+
+.bottomSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  padding: 0 20px 12px;
+}
+
+.progressSection {
+  flex: 0 0 400px;
+  min-width: 0;
+}
+
+/* ─── Action Buttons ────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+/* ─── Details + Address Row ─────────────────────────────────────────────── */
+.orderDetailsCol {
+  min-width: 0;
+}
+
+.addressCol {
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+/* Allowance Details */
+
+.accordionCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.accordionHeader:hover {
+  background: var(--color-background);
+}
+
+.accordionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.accordionIcon {
+  padding: 4px;
+  background-color: var(--icon-background);
+  border-radius: 4px;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.accordionBody {
+  padding: 16px 20px;
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.accordionEmpty {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+.additionalDetailsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  column-gap: 28px;
+  row-gap: 24px;
+}
+
+.additionalDetailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.detailLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+
+  white-space: nowrap;
+}
+
+.detailValue {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.detailAction {
+  width: fit-content;
+
+  padding: 0;
+  margin-top: -2px;
+
+  border: 0;
+  background: transparent;
+
+  color: var(--color-primary);
+
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* ─── Line Items Card ───────────────────────────────────────────────────── */
+
+.lineItemsCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 12px 0;
+}
+
+.lineItemsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border-primary);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.lineItemsTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.lineItemsTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.lineItemsMeta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+}
+
+.lineItemsSearch {
+  max-width: 280px;
+}
+.searchInputCont {
+  font-size: var(--font-size-xs);
+  height: 34px;
+  background-color: var(--color-background);
+}
+.searchInput::placeholder {
+  font-size: var(--font-size-xs);
+}
+
+/* Footer */
+
+.footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.card {
+  width: 100%;
+  height: fit-content;
+  align-self: start;
+  min-height: 0;
+  background: var(--color-surface);
+  border-radius: 8px;
+  border: 1px solid var(--color-border-primary);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* =========================
+   Summary Row
+========================= */
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+
+  box-sizing: border-box;
+}
+
+.label {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+
+  letter-spacing: 0.02em;
+}
+
+.value {
+  font-size: var(--font-size-sm);
+
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+
+  white-space: nowrap;
+}
+
+/* =========================
+   Divider
+========================= */
+
+.dividerH {
+  height: 1px;
+  margin: 0 20px;
+  border-top: 2px dotted var(--color-border-primary);
+  box-sizing: border-box;
+}
+
+/* =========================
+   Grand Total
+========================= */
+
+.grandTotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px;
+
+  background: var(--color-total-card);
+
+  box-sizing: border-box;
+}
+
+.grandTotalLabel {
+  font-size: var(--font-size-md);
+  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.grandTotalValue {
+  font-size: var(--font-size-md);
+  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+
+  white-space: nowrap;
+}
+
+/* =========================
+   Grand Total
+========================= */
+
+.totalSection {
+  position: relative;
+  margin: 16px 20px;
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 80px;
+  box-sizing: border-box;
+
+  /* Keep the Figma SVG styling when the asset resolves; the CSS gradient
+     underneath is a fallback so the bar is never left transparent. */
+  background-image:
+    radial-gradient(circle at 10% 35%, #fff 2px, transparent 3px),
+    radial-gradient(circle at 15% 80%, #fff 1.5px, transparent 2.5px),
+    radial-gradient(circle at 21% 20%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 31% 10%, #fff 2px, transparent 3px),
+    radial-gradient(circle at 5% 25%, #fff 1.5px, transparent 2.5px),
+    radial-gradient(circle at 1% 60%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 93% 30%, #fff 2px, transparent 3px),
+    radial-gradient(circle at 86% 75%, #fff 1.5px, transparent 2.5px),
+    radial-gradient(circle at 80% 18%, #fff 1px, transparent 2px),
+    radial-gradient(circle at 70% 30%, #fff 2px, transparent 3px),
+    radial-gradient(circle at 76% 75%, #fff 1.5px, transparent 2.5px),
+    radial-gradient(circle at 98% 75%, #fff 1px, transparent 2px),
+    url("../../../assets/images/invoice/invoice-gradiant.svg"),
+    linear-gradient(105deg, #dceaff 0%, #c9e0ff 48%, #c69bff 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.totalContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  white-space: nowrap;
+}
+
+.totalLabel {
+  font-size: var(--font-size-md);
+  line-height: 1;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.totalValue {
+  font-size: var(--font-size-3xl);
+  line-height: 1;
+  font-weight: var(--font-weight-semibold);
+  color: #4a1b73;
+  white-space: nowrap;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════════════════════════════════════ */
+
+/* ─── Tablet Landscape  ≤ 1280px ──────────────────────────────── */
+@media (max-width: 1280px) {
+  .detailsRow {
+    grid-template-columns: 1fr;
+  }
+
+  /* Bill/Ship To expands to 2-col row at tablet landscape */
+  .addressCol {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .addressCol > * {
+    flex: 1 1 calc(50% - 7px);
+    min-width: 200px;
+  }
+
+  .progressSection {
+    flex: 0 0 380px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headerCard {
+    padding: 0 20px 20px;
+  }
+
+  .topSection {
+    min-height: unset;
+    gap: 0;
+  }
+
+  .orderInfo {
+    padding-top: 18px;
+  }
+
+  .customer {
+    /* becomes a simple inline tag below order info */
+    align-self: unset;
+    padding: 8px 12px;
+    font-size: var(--font-size-xs);
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .progressSection {
+    flex: unset;
+    width: 100%;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 4px;
+
+    scrollbar-width: thin;
+    flex-wrap: wrap;
+  }
+
+  .lineItemsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .lineItemsSearch {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerCard {
+    padding: 0 16px 16px;
+  }
+
+  .orderNumber {
+    font-size: var(--font-size-xl);
+  }
+
+  .meta {
+    gap: 16px;
+
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  .divider {
+    display: none;
+  }
+  .metaItem {
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  /* Bill/Ship To stacks single column on mobile */
+  .addressCol {
+    flex-direction: column;
+  }
+
+  .accordionHeader {
+    padding: 14px 16px;
+  }
+
+  .accordionTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .button {
+    height: 40px;
+    padding: 0 14px;
+    font-size: var(--font-size-xs);
+  }
+
+  .lineItemsMeta {
+    display: block;
+    font-size: var(--font-size-xs);
+  }
+
+  .lineItemsHeader {
+    padding: 12px 16px;
+  }
+
+  .accordionBody {
+    padding: 14px 16px;
+  }
+}

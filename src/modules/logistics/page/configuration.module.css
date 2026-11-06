@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.tooltip {
+  background-color: #141414 !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+}
+
+.pageTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+}
+
+.tooltipArrow {
+  color: #141414 !important;
+}
+
+.tooltipTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Toolbar & Table ── */
+.tableCard {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 24px 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.filtersGroup {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.filterField {
+  width: 220px;
+  min-width: 200px;
+  flex: 0 0 220px;
+}
+
+/* Keep each control constrained to its wrapper */
+.filterField > * {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ========================================
+   Responsive Breakpoints
+======================================== */
+
+@media (max-width: 1024px) {
+  .filtersGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterField {
+    width: 100%;
+    min-width: 0;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .tableCard {
+    border-radius: 12px;
+  }
+
+  .toolbar {
+    padding: 16px;
+  }
+}

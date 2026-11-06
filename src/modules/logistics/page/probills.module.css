@@ -1,0 +1,155 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 40px;
+  overflow: hidden;
+}
+
+.breadcrumbLink {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-primary) !important;
+}
+
+.tooltip {
+  background-color: var(--color-tooltip) !important;
+  color: var(--color-text-inverse) !important;
+  font-size: 12px !important;
+}
+
+.tooltipArrow {
+  color: var(--color-tooltip) !important;
+}
+
+.tooltipTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Toolbar & Table ── */
+.tableCard {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 80px;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.toolbarTitle {
+  font-size: var(--font-size-lg, 18px);
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ─── Expand Accordion Chevron in Listing Row ─── */
+.chevron {
+  transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ─── Details inside Expanded Row ─── */
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 24px;
+
+  border-top: 1px dashed var(--color-border-primary);
+}
+
+.addressContainer {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.accordionCard {
+  border: 1px solid var(--color-border-primary);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.accordionTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--font-size-sm, 14px);
+  font-weight: var(--font-weight-semibold, 600);
+  color: var(--color-text-primary);
+}
+.lineItemTableCard {
+  border-radius: 16px;
+  box-shadow: 0px 2px 10px 0px rgba(58, 57, 59, 0.05);
+  border-color: var(--color-border-primary);
+  overflow: hidden;
+}
+
+.accordionEmpty {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Mobile - Responsive
+   350px - 767px
+======================================== */
+
+@media (max-width: 767px) {
+  .tableCard {
+    border-radius: 12px;
+  }
+
+  .addressContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .detailsContainer {
+    padding: 14px 12px;
+  }
+}

@@ -1,0 +1,128 @@
+:root {
+  --color-primary: #5b139b;
+  --color-primary-hover: #4c0f85;
+
+  --color-secondary: #d9d9d9;
+
+  --color-dark: #1c1c1c;
+
+  --color-primary-light: #f3e8ff;
+  --color-primary-lighter: #faf5ff;
+
+  --color-background: #f4f8fb;
+  --color-surface: #ffffff;
+
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-label: #7b7b7b;
+  --color-text-divider: #a2a2a2;
+
+  --color-text-disabled: #9ca3af;
+  --color-text-inverse: #ffffff;
+
+  --color-border-primary: #dadada;
+  --color-border-primary-light: #f3f4f6;
+  --color-border-secondary: #999999;
+  --color-text-link: #0284c7;
+  --color-text-link-hover: #0369a1;
+  --color-error: #ef4444;
+  --color-input-focus: #20c75b;
+  --color-input-hover: #5a5757;
+  --color-modal-table-header: #f5f6fc;
+  --color-tooltip: #141414;
+
+  --color-button-text: #111111;
+
+  --color-filter-active-bg: #f0dfff;
+  --color-filter-active-border: #cc92ff;
+
+  --gradient-menu-active: linear-gradient(
+    90deg,
+    rgba(9, 20, 174, 1),
+    rgba(106, 23, 194, 1),
+    rgba(115, 24, 196, 1)
+  );
+  --gradient-sidebar-overlay: linear-gradient(
+    180deg,
+    rgba(10, 6, 36, 0.95) 0%,
+    rgba(18, 7, 56, 0.85) 60%,
+    rgba(32, 10, 84, 0.9) 100%
+  );
+
+  --divider-gradiant: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(167, 139, 250, 0.5) 50%,
+    transparent 100%
+  );
+  --divider-gradiant2: linear-gradient(
+    90deg,
+    transparent 0%,
+    #6b4faa 0%,
+    #0b0b2a 100%
+  );
+
+  --gradiant-purple-blue: linear-gradient(
+    100deg,
+    rgba(222, 207, 255, 0.3) 0%,
+    rgba(0, 26, 255, 0.3) 100%
+  );
+  --color-button-primary-text: #fbfbfb;
+
+  --color-button-secondary-bg: transparent;
+  --color-button-secondary-text: #3b3b3b;
+  --color-button-secondary-border: #3b3b3b;
+
+  --color-button-gray-bg: #eaeaea;
+  --color-button-gray-text: #333333;
+  --color-card-value: #380c5f;
+  --color-card-title: #111111;
+  --color-card-border: #efecf4;
+
+  --icon-background: rgb(229, 250, 229);
+  --color-scrollDot: #0914ae;
+
+  --color-badge-bg: #f3f3f3;
+  --color-customer-badge-bg: #eaeaea;
+
+  --color-message-badge: #e7f1ef;
+
+  /* create Shipment */
+  --color-shipmentid-text: #111111;
+  --color-shipmentSub-text: #434343;
+
+  --color-line-item: #12181a;
+  --transport-mode-bg: #e1edff;
+  --transport-mode-text-active: #0069ff;
+
+  --pallet-label-strip: #a076c5;
+  --card-field: #434343;
+  --card-field-value: #434343;
+  --card-field-description: #111111;
+  --stepper-step-completed-bg: #30bf7d;
+  --stepper-step-completed-text: #ffffff;
+
+  --stepper-inactive-border: #a2a2a2;
+  --stepper-inactive-text: #7b7b7b;
+  --stepper-inactive-bg: #e8e8e8;
+
+  --stepper-step-active-text: #ffffff;
+  --stepper-step-active-bg: linear-gradient(100deg, #0914ae 0%, #7318c4 100%);
+  --stepper-line-completed: #999999;
+  --stepper-line-inactive: #dadada;
+
+  --pallet-card-selected-border: #a855f7;
+  --transfer-container-bg: #f4f8fb;
+  --transfer-container-border: #e2e8f0;
+
+  /* create invoice */
+  --button-green-bg: #0e6b5c;
+  --button-green-text: #ffffff;
+  --color-text-primary-hard: #111111;
+  --color-text-secondary-hard: #1c1c1c;
+  --color-text-primary-light: #434343;
+  --color-text-secondary-light: #7b7b7b;
+
+  /* invoice Detail */
+  --color-total-card: #e6eefd;
+}

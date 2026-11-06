@@ -1,0 +1,64 @@
+import { config } from "../app/config";
+
+const BASE_URL = config.retailBaseUrl;
+export const RETAIL_API_ENDPOINTS = {
+  USER_LOGIN: `${BASE_URL}account/UserLogin`,
+  GET_MODULE_SETTING: `${BASE_URL}Settings/GetModuleSettingBySoLocId/`,
+  GET_PARTNER_DETAILS: `${BASE_URL}SubOrgLoc/GetTradingPartnerBySOLocID/`,
+  GET_DASHBOARD_GRAPH: `${BASE_URL}Dashboard/GetOverallAnlyticsDataForSeller`,
+  GENERATE_GRAPH_REPORT: `${BASE_URL}TiA/generateGraphReport/`,
+
+  GET_SHIPMENT_STATUSES: `${BASE_URL}Analytics/GetDocumentStatuses/Shipment`,
+  GET_PAGED_SHIPMENTS: `${BASE_URL}TCG856/GetPagedASN_TCG856`,
+  GET_SEND_ASN: `${BASE_URL}TCG856/SendASNTCG`,
+  GET_GENERATE_ASN_PDF: `${BASE_URL}TCG856/GenerateASNPDF`,
+  GET_ASN_REPORT: `${BASE_URL}TCG856/GenerateASNReport/`,
+  GET_SHIPMENT_DETAILS: `${BASE_URL}TCG856/GetASNByID_TCG856/`,
+  GET_GENERATE_SHIPPING_LABEL: `${BASE_URL}TCG856/RenderShippingLabel/`,
+  GET_GENERATE_PACKING_SLIP: `${BASE_URL}TCG856/GenerateASNPACKINGPDF`,
+  CREATE_SHIPMENT: `${BASE_URL}TCG856/CreateTCG856`,
+  CREATE_INVOICE: `${BASE_URL}TCG810/CreateTCG810`,
+  EDIT_INVOICE: `${BASE_URL}/TCG810/EditTCG810`,
+  GET_CONFIG_DATA_FOR_ALL_DOCTYPE: `${BASE_URL}TIA/GetConfigurationDataforAllDoctype`,
+
+  GET_POSTATUS: `${BASE_URL}Analytics/GetDocumentStatuses/Purchase Order`,
+  GET_POLISTING: `${BASE_URL}TCG850/GetPagedTCG850`,
+  GET_PURCHASE_ORDER: `${BASE_URL}TCG850/Get850PurchaseOrderById`,
+
+  GET_POREPORT: `${BASE_URL}TCG850/GeneratePOReport/`,
+  GENERATE_MULTIPLE_ORDER_PDF: `${BASE_URL}TCG850/GenerateMultipleOrderPDF`,
+  GET_MULTIPLE_ORDERS_FOR_CSV: `${BASE_URL}TCG850/GenerateMultipleOrdersForCSV`,
+  GENERATE_PO_ORDER_PDF: `${BASE_URL}TCG850/GeneratePOPDF`,
+
+  GET_INVOICE_LIST: `${BASE_URL}TCG810/GetPagedTCG810`,
+  GET_INVOICE_STATUS: `${BASE_URL}Analytics/GetDocumentStatuses/Invoice`,
+  GET_INVOICE_REPORT: `${BASE_URL}TCG810/GenerateInvoiceReport/`,
+  GET_INVOICE_DETAILS: `${BASE_URL}TCG810/GetInvoiceByID_TCG810`,
+  SEND_INVOICE: `${BASE_URL}TCG810/SendInvoiceTCG`,
+  GENERATE_INVOICE_PDF: `${BASE_URL}TCG810/GenerateInvoicePDF_TCG810`,
+
+  GET_DELFOR_STATUSES: `${BASE_URL}Analytics/GetDocumentStatuses/Delivery Forecast`,
+  GET_DELFOR_LISTING: `${BASE_URL}TCGReports/GetPagedReports`,
+  GET_DELFOR_PDF: `${BASE_URL}delfor/GenerateDELFORPDF`,
+  GET_DELFOR_CSV: `${BASE_URL}TCG830/PlanningScheduleForMultipleCSV`,
+  GET_DELFOR_REPORT: `${BASE_URL}Delfor/GetDelforReport`,
+  GET_DELFOR_EDI: `${BASE_URL}DelFor/GetEDIFACTFile`,
+  GET_DELFOR_DETAILS: `${BASE_URL}TCG830/PlanningScheduleById/?DelforIDs=`,
+  GET_PDF_TEMPLATES: `${BASE_URL}SubOrgLoc/GetAllPDFTemplate/`,
+  GET_GENERIC_DELFOR_PDF: `${BASE_URL}TCG830/GenericPDF830`,
+
+  GET_DELJIT_LISTING: `${BASE_URL}TCGReports/GetPagedReports`,
+  GET_DELJIT_REPORT: `${BASE_URL}DelJit/GetDeljitReport/`,
+
+  GET_DELFOR_DELJIT_HISTORY: `${BASE_URL}TCG830/PlanningScheduleHistory`,
+
+  GET_PAGED_EDI_DOC: `${BASE_URL}EDIDocument/GetPagedEDIDoc`,
+  GET_EDI_DOC_BY_ID: `${BASE_URL}EDIDocument/GetEDIDocByID`,
+  GENERATE_EDI_PDF: `${BASE_URL}EDIDocument/GenerateEdiPdf`,
+
+  GET_INV_LISTING_COUNTS: `${BASE_URL}TCG810/GetInvoiceListingCounts`,
+  GET_PO_LISTING_COUNTS: `${BASE_URL}TCG850/GetPOListingCounts`,
+  GET_ASN_LISTING_COUNTS: `${BASE_URL}TCG856/GetASNListingCounts`,
+
+  PUSH_PO_ACKNOWLEDGEMENT: `${BASE_URL}TCG855/CreateACK855`,
+};

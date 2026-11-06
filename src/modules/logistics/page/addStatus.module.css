@@ -1,0 +1,321 @@
+
+.page {
+  width: 100%;
+  min-height: 100%;
+  padding: 20px 24px 32px;
+  box-sizing: border-box;
+  background: #f3f8fc;
+  color: #242424;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #777;
+  font-size: 13px;
+}
+
+.breadcrumbs button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #555;
+  font: inherit;
+  cursor: pointer;
+}
+
+.breadcrumbs button:hover {
+  color: #6415a8;
+}
+
+.currentBreadcrumb {
+  color: #242424;
+  font-weight: 500;
+}
+
+.pageTitle {
+  margin: 0 0 20px;
+  font-size: 24px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.card {
+  padding: 22px 24px 18px;
+  background: #fff;
+  border: 1px solid #e9e9ef;
+  border-radius: 17px;
+  box-shadow: 0 3px 12px rgb(25 25 60 / 5%);
+}
+
+.customerName {
+  margin: 0 0 18px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  gap: 16px;
+  align-items: stretch;
+  min-height: 475px;
+}
+
+.addPanel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) auto;
+  align-items: center;
+  align-self: start;
+  gap: 16px;
+  padding: 26px 24px;
+  border: 1px solid #e6e6e6;
+  border-radius: 17px;
+}
+
+.field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  color: #454545;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.field select,
+.field input,
+.statusRow > div:first-child input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #b8b8b8;
+  border-radius: 9px;
+  background: #fff;
+  color: #303030;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.field select:focus,
+.field input:focus,
+.statusRow > div:first-child input:focus {
+  border-color: #6415a8;
+  box-shadow: 0 0 0 2px rgb(100 21 168 / 10%);
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.field input::placeholder,
+.statusRow > div:first-child input::placeholder {
+  color: #aaa;
+}
+
+.fieldHint {
+  color: #777;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.addButton {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  align-self: end;
+}
+
+.divider {
+  width: 1px;
+  min-height: 100%;
+  background: #d9d6e5;
+}
+
+.statusTable {
+  min-width: 0;
+  overflow: hidden;
+  align-self: stretch;
+  border: 1px solid #e6e6e6;
+  border-radius: 17px;
+}
+
+.tableHeader,
+.statusRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.55fr;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+}
+
+.tableHeader {
+  min-height: 42px;
+  box-sizing: border-box;
+  background: #f4f5fb;
+  color: #686868;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.tableBody {
+  padding: 0 24px;
+}
+
+.statusRow {
+  min-height: 75px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.statusRow:last-child {
+  border-bottom: 0;
+}
+
+.statusRow > div:first-child input {
+  height: 43px;
+}
+
+.statusRow > div:first-child input:disabled {
+  background-color: #f1f1f4;
+  color: #999;
+  border-color: #e0e0e5;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.statusName {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+  color: #555;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.checkboxCell {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.checkboxCell input {
+  width: 21px;
+  height: 21px;
+  margin: 0;
+  accent-color: #6817b0;
+  cursor: pointer;
+}
+
+.emptyState {
+  display: flex;
+  min-height: 180px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #858585;
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.message {
+  color: #6415a8;
+  font-size: 13px;
+}
+
+.saveButton {
+  min-width: 60px;
+  min-height: 40px;
+  padding: 0 17px;
+  border: 0;
+  border-radius: 9px;
+  background: #6817b0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.saveButton:hover {
+  background: #501087;
+}
+
+@media (max-width: 1100px) {
+  .content {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .divider {
+    width: 100%;
+    min-height: 1px;
+  }
+
+  .statusTable {
+    min-height: 180px;
+  }
+}
+
+@media (max-width: 650px) {
+  .page {
+    padding: 16px 12px 24px;
+  }
+
+  .card {
+    padding: 18px 14px;
+  }
+
+  .addPanel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+
+  .tableHeader,
+  .statusRow {
+    grid-template-columns: 0.8fr 1fr 0.4fr;
+    gap: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .tableHeader {
+    font-size: 11px;
+  }
+
+  .statusName {
+    font-size: 12px;
+  }
+
+  .statusRow > div:first-child input {
+    padding: 0 8px;
+  }
+}

@@ -1,0 +1,737 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  padding: 48px;
+  box-sizing: border-box;
+  background: var(--color-surface);
+  font-family: var(--font-primary);
+}
+
+/* ========================================
+   LOGIN PANEL (LEFT on Desktop, BOTTOM on Mobile/Tablet)
+   ======================================== */
+
+.loginPanel {
+  width: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.loginContent {
+  width: 100%;
+  max-width: 387px;
+}
+
+/* ========================================
+   LOGIN HEADER
+   ======================================== */
+
+.header {
+  height: 45px;
+  margin-bottom: 36px;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+}
+
+/* ========================================
+   FORM
+   ======================================== */
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* ========================================
+   ERROR ALERT
+   ======================================== */
+
+.errorAlert {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  box-sizing: border-box;
+}
+
+.errorText {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ========================================
+   LOGIN BUTTON
+   ======================================== */
+
+.loginBtn {
+  width: 100%;
+  height: 44px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.loginBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   FORGOT PASSWORD
+   ======================================== */
+
+.forgotPasswordRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+.forgotPasswordLink {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.forgotPasswordLink:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+
+.dividerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dividerLine,
+.dividerLineRight {
+  flex: 1;
+  height: 1px;
+  background: var(--color-text-divider);
+}
+
+.dividerText {
+  flex-shrink: 0;
+  margin: 0 12px;
+  color: var(--color-text-divider);
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+}
+
+/* ========================================
+   MICROSOFT BUTTON
+   ======================================== */
+
+.ssoBtn {
+  width: 100%;
+  height: 44px;
+  margin: 0;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* ========================================
+   WELCOME PANEL (RIGHT on Desktop, TOP on Mobile/Tablet)
+   ======================================== */
+
+.welcomePanel {
+  width: 50%;
+  height: calc(100vh - 96px);
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  background: #0a0e31;
+}
+
+.welcomeBackground {
+  position: absolute;
+
+  width: 100%;
+
+  left: 0;
+  bottom: 0;
+  transform: rotate(180deg);
+  object-fit: cover;
+  object-position: bottom;
+
+  z-index: 0;
+}
+
+.welcomeContent {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 540px;
+
+  padding: 48px;
+
+  box-sizing: border-box;
+}
+
+.welcomeTitle {
+  margin: 0 0 14px;
+  color: var(--color-surface);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.welcomeDescription {
+  max-width: 480px;
+  margin: 0;
+  color: var(--color-surface);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.55;
+}
+
+/* ========================================
+   TESTIMONIAL CARD
+   ======================================== */
+
+/* .testimonialCard {
+  width: 100%;
+  margin-top: 60px;
+  padding: 32px 30px 26px;
+  border-radius: 20px;
+  background: var(--color-primary);
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  clip-path: polygon(
+    0% 0%,
+    80% 0%,
+    81% 1px,
+    82% 4px,
+    82.5% 8px,
+    82.8% 12px,
+    83% 18px,
+    83.4% 28px,
+    83.8% 38px,
+    84% 45px,
+    100% 45px,
+    100% 100%,
+    0% 100%
+  );
+} */
+.testimonialCard {
+  width: 100%;
+  margin-top: 60px;
+  padding: 32px 30px 26px;
+  border-radius: 20px;
+  background: var(--color-primary);
+  box-sizing: border-box;
+
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+  clip-path: url("#testimonialClip");
+}
+.quote {
+  max-width: 400px;
+  margin: 0 0 24px;
+  color: var(--color-surface);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.authorName {
+  color: var(--color-surface);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+.designation {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}
+
+/* Avatar stack */
+.avatarStack {
+  display: flex;
+  align-items: center;
+}
+
+.avatarImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-surface);
+  object-fit: cover;
+  margin-left: -6px;
+  display: block;
+}
+
+.avatarImg:first-child {
+  margin-left: 0;
+}
+
+.avatarBadge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-surface);
+  background: var(--color-primary);
+  color: var(--color-surface);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -6px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   BREAKPOINT: 1024px - 1279px (Medium Desktop / Laptops)
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .loginPanel {
+    width: 50%;
+    padding: 32px;
+  }
+
+  .loginContent {
+    max-width: 360px;
+  }
+
+  .welcomePanel {
+    width: 50%;
+  }
+
+  .welcomeContent {
+    max-width: 460px;
+    padding: 32px;
+  }
+
+  .welcomeTitle {
+    font-size: var(--font-size-4xl);
+  }
+
+  .welcomeDescription {
+    font-size: var(--font-size-sm);
+  }
+
+  .testimonialCard {
+    margin-top: 44px;
+    padding: 28px 24px 22px;
+  }
+
+  .quote {
+    font-size: var(--font-size-xl);
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* ========================================
+     TABLET - STACKED LAYOUT
+     ======================================== */
+
+  .container {
+    width: 100%;
+    min-height: 100vh;
+
+    flex-direction: column;
+
+    padding: 0;
+
+    box-sizing: border-box;
+  }
+
+  /* ========================================
+     WELCOME HERO
+     ======================================== */
+
+  .welcomePanel {
+    order: 1;
+
+    width: 100%;
+    height: 248px;
+    min-height: 248px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    background: #0a0e31;
+  }
+
+  .welcomeBackground {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: 0;
+    top: 0;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: rotate(180deg);
+
+    z-index: 0;
+  }
+
+  .welcomeContent {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 580px;
+
+    padding: 0 32px;
+
+    margin: 0 auto;
+
+    box-sizing: border-box;
+  }
+
+  .welcomeTitle {
+    margin: 0 0 10px;
+
+    font-size: var(--font-size-4xl);
+    line-height: 1.2;
+  }
+
+  .welcomeDescription {
+    max-width: 520px;
+
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+  }
+
+  /* Hide testimonial on tablet */
+  .testimonialCard {
+    display: none;
+  }
+
+  /* ========================================
+     LOGIN
+     ======================================== */
+
+  .loginPanel {
+    order: 2;
+
+    width: 100%;
+    min-height: auto;
+
+    padding: 68px 32px 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    box-sizing: border-box;
+  }
+
+  .loginContent {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .formGroup {
+    margin-bottom: 16px;
+  }
+
+  .forgotPasswordRow {
+    margin-top: 14px;
+    margin-bottom: 20px;
+  }
+
+  .dividerContainer {
+    margin-bottom: 20px;
+  }
+}
+
+/* ==========================================================================
+   BREAKPOINT: < 768px
+   Mobile - 360px design, fluid up to 767px
+   ========================================================================== */
+
+@media (max-width: 767px) {
+  /* ========================================
+     CONTAINER
+     ======================================== */
+
+  .container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    box-sizing: border-box;
+  }
+
+  /* ========================================
+     WELCOME HERO
+     ======================================== */
+
+  .welcomePanel {
+    order: 1;
+
+    width: 100%;
+    height: 209px;
+    min-height: 209px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    background: #0a0e31;
+  }
+
+  .welcomeBackground {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transform: rotate(180deg);
+
+    z-index: 0;
+  }
+
+  .welcomeContent {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: none;
+
+    padding: 39px 34px 20px;
+
+    margin: 0;
+
+    box-sizing: border-box;
+  }
+
+  .welcomeTitle {
+    margin: 0 0 10px;
+
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+  }
+
+  .welcomeDescription {
+    width: 100%;
+    max-width: 310px;
+
+    margin: 0;
+
+    font-weight: var(--font-weight-regular);
+    line-height: 1.55;
+  }
+
+  /* ========================================
+     TESTIMONIAL
+     ======================================== */
+
+  .testimonialCard {
+    display: none;
+  }
+
+  /* ========================================
+     LOGIN PANEL
+     ======================================== */
+
+  .loginPanel {
+    order: 2;
+
+    width: 100%;
+    min-height: auto;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 17px 16px 70px;
+
+    box-sizing: border-box;
+
+    background: var(--color-surface);
+  }
+
+  .loginContent {
+    width: 100%;
+    max-width: 294px;
+
+    margin: 0 auto;
+  }
+
+  /* ========================================
+     LOGIN HEADER
+     ======================================== */
+
+  .header {
+    margin-bottom: 31px;
+  }
+
+  .title {
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+    line-height: 1.2;
+  }
+
+  /* ========================================
+     FORM
+     ======================================== */
+
+  .formGroup {
+    width: 100%;
+    margin-bottom: 14px;
+  }
+
+  /* ========================================
+     LOGIN BUTTON
+     ======================================== */
+
+  /* ========================================
+     FORGOT PASSWORD
+     ======================================== */
+
+  .forgotPasswordRow {
+    display: flex;
+    justify-content: center;
+
+    margin-top: 28px;
+    margin-bottom: 22px;
+  }
+
+  /* ========================================
+     DIVIDER
+     ======================================== */
+
+  .dividerContainer {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 21px;
+  }
+
+  .dividerLine {
+    flex: none;
+
+    width: 114px;
+    height: 1px;
+
+    background: var(--color-text-divider);
+  }
+
+  .dividerLineRight {
+    display: none;
+  }
+
+  .dividerText {
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1;
+    color: var(--color-text-secondary);
+  }
+}

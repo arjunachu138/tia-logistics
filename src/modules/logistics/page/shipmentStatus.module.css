@@ -1,0 +1,126 @@
+.container {
+  background-color: var(--color-background);
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--color-surface,);
+  border-radius: 12px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-card-border,);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+
+  border-bottom: 1px solid var(--color-border-primary);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary-hard);
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.actionButton {
+  background: var(--color-primary,);
+  color: var(--color-text-inverse,);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.actionButton:hover {
+  background: var(--color-primary-hover);
+}
+
+.grid3 {
+  padding: 16px 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-md);
+  color: var(--color-text-secondary);
+}
+
+.fieldValue {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary-hard);
+  word-break: break-word;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border-primary);
+  opacity: 0.5;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+.loadingState,
+.errorState {
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-secondary, #666666);
+  background: var(--color-surface, #ffffff);
+  border-radius: 12px;
+  border: 1px solid var(--color-card-border, #efecf4);
+}
+
+.errorState {
+  color: var(--color-error, #ef4444);
+}
+
+
+.breadcrumbLink {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-primary) !important;
+}

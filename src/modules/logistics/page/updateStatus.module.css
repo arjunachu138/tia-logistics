@@ -1,0 +1,172 @@
+.container {
+  background-color: var(--color-background);
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: var(--color-surface);
+  border-radius: 12px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--color-card-border,);
+}
+
+.cardTitle {
+  font-size: var(--font-size-md);
+  padding: 25px 17px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary-hard);
+  border-bottom: 1px solid var(--color-border-primary);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+}
+
+.grid4 {
+  padding: 25px 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 24px;
+  align-items: flex-start;
+}
+
+.notesSpan2 {
+  grid-column: span 2;
+}
+
+.borderEventRow {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 24px;
+  align-items: flex-end;
+}
+
+.addLocationButtonWrapper {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+}
+
+.addLocationButton {
+  width: 100%;
+  height: 40px;
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.addLocationButton:hover {
+  background: var(--color-primary-lighter);
+}
+
+.saveContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+  gap: 16px;
+}
+
+.saveButton {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 36px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.saveButton:hover {
+  background: var(--color-primary-hover);
+}
+
+@media (max-width: 1024px) {
+  .grid4,
+  .borderEventRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .notesSpan2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid4,
+  .borderEventRow {
+    grid-template-columns: 1fr;
+  }
+  .notesSpan2 {
+    grid-column: span 1;
+  }
+}
+
+.errorMessage {
+  padding: 10px 16px;
+  background: #fef2f2;
+  border: 1px solid var(--color-error, #ef4444);
+  border-radius: 8px;
+  color: var(--color-error, #ef4444);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.cancelButton {
+  background: transparent;
+  color: var(--color-primary, #5b139b);
+  border: 1px solid var(--color-primary, #5b139b);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cancelButton:hover {
+  background: var(--color-primary-lighter, #faf5ff);
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.breadcrumbLink {
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--color-primary) !important;
+}
+
+.fieldError {
+  font-size: 11px;
+  color: var(--color-error, #ef4444);
+  margin-top: 4px;
+  display: block;
+}
+
+.dropdownWrapper {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,171 @@
+.card {
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.cardIcon {
+  padding: 4px;
+  background-color: var(--icon-background);
+  border-radius: 4px;
+}
+
+.cardTitle {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* =========================
+   Section
+========================= */
+
+.section {
+  padding: 16px 20px;
+}
+
+.sectionLabel {
+  margin: 0 0 12px 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* =========================
+   Information Grid
+========================= */
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+  flex: 1;
+  padding-right: 24px;
+}
+
+.fieldLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.fieldValue {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  word-break: break-word;
+}
+
+/* =========================
+   Divider
+========================= */
+
+.divider {
+  height: 0;
+  border: none;
+  border-top: 1px dashed var(--color-text-secondary);
+  margin: 0 20px;
+  opacity: 0.6;
+}
+
+
+/* =========================
+   Decorative Dollar Icons
+========================= */
+
+@media (max-width: 1100px) {
+  .totalSection {
+    padding: 16px 60px;
+  }
+
+  .totalContent {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 800px) {
+  .cardHeader {
+    padding: 28px 24px 24px;
+  }
+
+  .section {
+    padding: 26px 24px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 24px;
+  }
+
+  .totalSection {
+    margin: 20px 24px 28px;
+    padding: 24px 50px;
+    min-height: 130px;
+  }
+
+  .totalContent {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .moneyIcon1 {
+    left: 8%;
+  }
+
+  .moneyIcon2 {
+    left: 22%;
+  }
+
+  .moneyIcon3 {
+    right: 22%;
+  }
+
+  .moneyIcon4 {
+    right: 8%;
+  }
+}
+
+@media (max-width: 520px) {
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .totalSection {
+    padding: 24px;
+    min-height: 140px;
+  }
+
+  .totalContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Hide decorative icons on very small screens */
+  .moneyIcon1,
+  .moneyIcon2,
+  .moneyIcon3,
+  .moneyIcon4 {
+    display: none;
+  }
+}

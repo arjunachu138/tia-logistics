@@ -1,0 +1,642 @@
+/* .sidebar {
+  width: 240px;
+  height: calc(100vh-5px);
+  background:
+    var(--gradient-sidebar-overlay),
+    url("../../assets/images/login/background-illust.jpg");
+  background-repeat: no-repeat, no-repeat;
+  background-size:
+    100% 100%,
+    auto 160%;
+  background-position:
+    center,
+    calc(50% + 190px) calc(100% + 900px);
+  background-color: #0b0a2d;
+
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px 0 10px 10px;
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    max-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: sticky;
+  top: 10px;
+  z-index: 40;
+  user-select: none;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+} */
+
+.sidebar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+
+  width: 240px;
+  height: calc(100vh - 20px);
+
+  background:
+    var(--gradient-sidebar-overlay),
+    url("../../assets/images/login/background-illust.jpg");
+
+  background-repeat: no-repeat, no-repeat;
+
+  background-size:
+    100% 100%,
+    auto 160%;
+
+  background-position:
+    center,
+    calc(50% + 190px) calc(100% + 900px);
+
+  background-color: #0b0a2d;
+
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  z-index: 1000;
+
+  user-select: none;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.collapsed {
+  width: 68px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 21px 25px;
+  justify-content: space-between;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.logo {
+  height: 46px;
+  width: 46px;
+  object-fit: contain;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.toggleBtn:hover {
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav {
+  flex: 1;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 2;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 24px;
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-size-md);
+  text-decoration: none;
+  transition: all 0.15s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+}
+
+.navItem:hover {
+  color: var(--color-surface);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navItem.active,
+.accordionActive {
+  background: var(--gradient-menu-active);
+  color: var(--color-text-inverse) !important;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 4px 14px rgba(126, 27, 229, 0.35);
+}
+
+.itemMain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s ease;
+  color: var(--color-text-inverse);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.accordionGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.subMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0 12px 38px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.subNavItem {
+  color: var(--color-text-inverse);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: block;
+}
+
+.subNavItem:hover {
+  color: var(--color-text-secondary);
+}
+
+.subActive {
+  color: var(--color-text-inverse) !important;
+  font-weight: var(--font-weight-semibold);
+}
+
+.subActive .subLabel {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.subActive .subLabel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2.5px;
+  background: var(--divider-gradiant2);
+}
+
+.subLabel {
+  display: inline-block;
+}
+
+.divider {
+  height: 1px;
+  background: var(--divider-gradiant);
+  margin: 8px 12px;
+  flex-shrink: 0;
+}
+
+/* Collapsed Sidebar Styles */
+.sidebar.collapsed .label,
+.sidebar.collapsed .chevron,
+.sidebar.collapsed .logoContainer,
+.sidebar.collapsed .subMenu {
+  display: none;
+}
+.sidebar.collapsed {
+  width: 80px;
+}
+.sidebar.collapsed .header {
+  height: 80px;
+  padding: 32px 0 24px;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.sidebar.collapsed .nav {
+  gap: 18px;
+  align-items: center;
+  padding: 14px 0;
+}
+
+.sidebar.collapsed .navItem {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.sidebar.collapsed .navItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar.collapsed .navItem.active,
+.sidebar.collapsed .accordionActive {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--gradient-menu-active);
+  box-shadow: 0 0 16px rgba(126, 27, 229, 0.5);
+}
+
+.sidebar.collapsed .itemMain {
+  gap: 0;
+  justify-content: center;
+}
+.sidebar.collapsed .divider {
+  width: 40px;
+  height: 1px;
+  margin: 0 auto;
+  background: var(--divider-gradiant);
+}
+.sidebar.collapsed .toggleBtn {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+.tooltipTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  box-sizing: border-box;
+}
+
+.collapsedSubMenu {
+  min-width: 180px;
+  margin-left: 20px;
+  margin-top: -20px;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 10px !important;
+  background:
+    var(--gradient-sidebar-overlay),
+    url("../../assets/images/login/background-illust.jpg") !important;
+
+  background-repeat: no-repeat, no-repeat;
+
+  background-size:
+    150% 140%,
+    auto 150%;
+
+  background-position:
+    center,
+    calc(50% + 90px) calc(50% + 100px);
+
+  background-color: #0b0a2d;
+  overflow: hidden;
+  transform-origin: left top;
+  animation: submenuOpen 500ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28) !important;
+}
+
+.collapsedSubMenuHeader {
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.collapsedSubMenuDivider {
+  height: 2px;
+  margin: 0 12px 10px;
+  background: var(--divider-gradiant2);
+}
+
+.collapsedSubMenuItems {
+  padding: 6px 0;
+}
+
+.collapsedSubNavItem {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 7px;
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.collapsedSubNavItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.collapsedSubActive {
+  background: rgba(255, 255, 255, 0.16);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Mobile Overlay Drawer Styles */
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.tooltip {
+  background-color: var(--color-tooltip) !important;
+  color: var(--color-text-inverse) !important;
+  font-size: 12px !important;
+}
+
+.tooltipArrow {
+  color: var(--color-tooltip) !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes submenuOpen {
+  from {
+    opacity: 0;
+    transform: translateX(-6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Responsive Media Queries */
+/* ========================================
+   Mobile Overlay Drawer
+======================================== */
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar.mobileOpen {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 320px;
+    height: 100vh;
+
+    margin: 0;
+    border-radius: 0;
+    z-index: 999;
+
+    box-shadow: 6px 0 30px rgba(0, 0, 0, 0.5);
+
+    animation: slideIn 0.25s ease-out;
+
+    /* Mobile sidebar is ALWAYS expanded */
+    overflow: hidden;
+  }
+
+  /* ----------------------------------------
+     Header
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .header,
+  .sidebar.collapsed.mobileOpen .header {
+    height: auto;
+    min-height: 80px;
+    padding: 16px 18px 16px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .sidebar.mobileOpen .logoContainer,
+  .sidebar.collapsed.mobileOpen .logoContainer {
+    display: flex;
+  }
+
+  .sidebar.mobileOpen .logo,
+  .sidebar.collapsed.mobileOpen .logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .sidebar.mobileOpen .toggleBtn,
+  .sidebar.collapsed.mobileOpen .toggleBtn {
+    width: 24px;
+    height: 24px;
+    margin: 0;
+  }
+
+  /* ----------------------------------------
+     Header divider
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen > .divider,
+  .sidebar.collapsed.mobileOpen > .divider {
+    margin: 0 16px;
+    width: auto;
+    height: 1px;
+  }
+
+  /* ----------------------------------------
+     Navigation
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .nav,
+  .sidebar.collapsed.mobileOpen .nav {
+    align-items: stretch;
+    gap: 6px;
+    padding: 18px 14px;
+    overflow-y: auto;
+  }
+
+  /* ----------------------------------------
+     Menu items
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .navItem,
+  .sidebar.collapsed.mobileOpen .navItem {
+    width: 100%;
+    height: 40px;
+
+    padding: 10px 14px;
+
+    margin: 0;
+
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+  }
+
+  .sidebar.mobileOpen .itemMain,
+  .sidebar.collapsed.mobileOpen .itemMain {
+    gap: 12px;
+    justify-content: flex-start;
+  }
+
+  /* ----------------------------------------
+     Icons
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .iconWrapper,
+  .sidebar.collapsed.mobileOpen .iconWrapper {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sidebar.mobileOpen .menuIcon,
+  .sidebar.collapsed.mobileOpen .menuIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ----------------------------------------
+     Labels
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .label,
+  .sidebar.collapsed.mobileOpen .label {
+    display: inline-block;
+  }
+
+  /* ----------------------------------------
+     Chevron
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .chevron,
+  .sidebar.collapsed.mobileOpen .chevron {
+    display: flex;
+  }
+
+  /* ----------------------------------------
+     Accordion
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .subMenu,
+  .sidebar.collapsed.mobileOpen .subMenu {
+    display: flex;
+  }
+
+  /* ----------------------------------------
+     Active menu
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .navItem.active,
+  .sidebar.mobileOpen .accordionActive,
+  .sidebar.collapsed.mobileOpen .navItem.active,
+  .sidebar.collapsed.mobileOpen .accordionActive {
+    width: 100%;
+    height: 40px;
+    border-radius: 24px;
+  }
+
+  /* ----------------------------------------
+     Dividers inside menu
+  ---------------------------------------- */
+
+  .sidebar.mobileOpen .divider,
+  .sidebar.collapsed.mobileOpen .divider {
+    width: auto;
+    margin: 8px 14px;
+    flex-shrink: 0;
+  }
+}

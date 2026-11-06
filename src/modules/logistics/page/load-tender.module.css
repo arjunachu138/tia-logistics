@@ -1,0 +1,629 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  padding-bottom: 40px;
+}
+
+.selectGroup {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+}
+.tooltip {
+  background-color: var(--color-tooltip) !important;
+  color: var(--color-text-inverse) !important;
+  font-size: 12px !important;
+}
+
+.tooltipArrow {
+  color: var(--color-tooltip) !important;
+}
+
+.tooltipTrigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.filterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 16px;
+  gap: 8px;
+  background-color: var(--color-surface);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-button-text);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  user-select: none;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.filterButton:hover {
+  background-color: var(--color-filter-active-bg);
+  border-color: var(--color-filter-active-border);
+}
+
+.filterButtonActive {
+  background-color: var(--color-filter-active-bg);
+  border-color: var(--color-filter-active-border);
+}
+
+.toolbarLeft {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+/* ========================================
+   Advance Filter
+======================================== */
+
+.filterModalOverlay {
+  position: absolute;
+  top: 94px;
+  left: 10px;
+  right: 10px;
+  width: auto;
+  box-sizing: border-box;
+  z-index: 99;
+}
+
+.filterActionButton {
+  height: 38px;
+}
+
+.filterCard {
+  position: relative;
+  width: 100%;
+  min-height: 102px;
+  box-sizing: border-box;
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.03);
+
+  animation: dropIn 0.15s ease-out;
+  padding: 16px 20px;
+}
+
+.modalTitle {
+  display: none;
+}
+
+/* Main filter wrapper */
+.advancedfilter {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.filterbuttons {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 10px;
+}
+
+/* ========================================
+   Filter Inputs
+======================================== */
+
+.filterInputs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-right: 220px;
+  box-sizing: border-box;
+}
+.filterField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.filterInput {
+  width: 100%;
+}
+
+.fieldLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary-dark);
+  letter-spacing: 0.2px;
+}
+
+/* ========================================
+   Close Button
+======================================== */
+
+.filterCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.15s ease;
+}
+
+.filterCloseButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ========================================
+   Apply / Clear Buttons
+======================================== */
+.filterActions {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0;
+  flex-shrink: 0;
+}
+/* ── Toolbar & Table ── */
+.tableCard {
+  position: relative;
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  overflow: visible;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-height: 118px;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.searchInput {
+  width: 240px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Responsive Breakpoints
+======================================== */
+
+@media (max-width: 1279px) {
+  .toolbarLeft {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .searchInput {
+    width: clamp(188px, 60vw, 340px);
+    min-width: 188px;
+    max-width: 340px;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .filterCard {
+    width: 100%;
+    padding: 16px 20px;
+  }
+
+  .filterInputs {
+    width: 100%;
+    display: flex;
+
+    gap: 16px;
+
+    box-sizing: border-box;
+  }
+
+  .filterField {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .filterInput {
+    width: 100%;
+  }
+
+  .filterActions {
+    right: 20px;
+    bottom: 0;
+  }
+
+  .filterCloseButton {
+    top: 8px;
+    right: 10px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .filterCard {
+    padding: 16px 20px;
+  }
+
+  .filterField {
+    flex: 0 0 149px;
+    width: 149px;
+    min-width: 149px;
+  }
+
+  .filterInput {
+    width: 100%;
+  }
+
+  .filterActions {
+    right: 20px;
+    bottom: 0px;
+  }
+
+  .filterCloseButton {
+    top: 8px;
+    right: 10px;
+  }
+
+  .filterInput :global(.MuiPickersInputBase-root.MuiPickersOutlinedInput-root) {
+    padding: 0 18px 0 10px !important;
+  }
+
+  .filterInput :global(.MuiPickersSectionList-root) {
+    padding: 0 !important;
+  }
+}
+
+@media (min-width: 945px) and (max-width: 1024px) {
+  .filterField {
+    flex: 0 0 187px;
+    width: 187px;
+    min-width: 187px;
+  }
+
+  .filterInputs {
+    padding-right: 50px;
+  }
+
+  .filterInput {
+    width: 187px;
+  }
+
+  .filterInput :global(.MuiPickersInputBase-root.MuiPickersOutlinedInput-root) {
+    padding: 0 18px 0 10px !important;
+  }
+
+  .filterInput :global(.MuiPickersSectionList-root) {
+    padding: 0 !important;
+  }
+
+  .filterbuttons {
+    height: 44px;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 944px) {
+  .filterField {
+    flex: 0 0 167px;
+    width: 167px;
+    min-width: 167px;
+  }
+
+  .filterInputs {
+    padding-right: 50px;
+  }
+
+  .filterInput {
+    width: 167px;
+  }
+
+  .filterInput :global(.MuiPickersInputBase-root.MuiPickersOutlinedInput-root) {
+    padding: 0 18px 0 10px !important;
+  }
+
+  .filterInput :global(.MuiPickersSectionList-root) {
+    padding: 0 !important;
+  }
+
+  .filterbuttons {
+    height: 44px;
+    justify-content: space-between;
+  }
+}
+
+/* ========================================
+   Mobile - Bottom Sheet Advance Filter
+   350px - 767px
+======================================== */
+
+@media (max-width: 767px) {
+  .filterHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .selectGroup {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .searchInput {
+    width: clamp(188px, 60vw, 340px);
+    min-width: 188px;
+    max-width: 340px;
+  }
+
+  .searchInput input {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ========================================
+     Full Screen Overlay
+  ======================================== */
+
+  .filterModalOverlay {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+
+    z-index: 999;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 10px 16px;
+
+    box-sizing: border-box;
+
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  /* ========================================
+     Bottom Sheet
+  ======================================== */
+
+  .filterCard {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+
+    box-sizing: border-box;
+
+    display: block;
+
+    /* Top / horizontal spacing */
+    padding: 24px 20px 80px;
+
+    background: var(--color-surface);
+
+    border-radius: 16px;
+
+    border: 1px solid var(--color-border-primary);
+    border-bottom: none;
+
+    box-shadow:
+      0 -4px 20px rgba(0, 0, 0, 0.08),
+      0 -1px 4px rgba(0, 0, 0, 0.04);
+
+    /* Slide from bottom */
+    animation: slideUp 0.2s ease-out;
+
+    /* Make sure the sheet sits above
+       the floating AI button */
+    z-index: 1000;
+  }
+
+  /* ========================================
+     Title
+  ======================================== */
+
+  .modalTitle {
+    display: block;
+
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+
+    color: var(--color-text-primary);
+
+    margin: 0 0 20px 0;
+  }
+
+  /* ========================================
+     Filter Inputs
+  ======================================== */
+
+  .filterInputs {
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 16px;
+
+    width: 100%;
+
+    padding: 0;
+  }
+
+  .filterField {
+    width: 100%;
+    min-width: 0;
+
+    flex: none;
+  }
+
+  .filterInput {
+    width: 100%;
+  }
+
+  /* ========================================
+     Apply / Clear
+  ======================================== */
+
+  .filterActions {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+    bottom: -66px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 0;
+
+    z-index: 5;
+  }
+
+  .filterActions > * {
+    flex: 1;
+  }
+
+  /* ========================================
+     Close Button
+  ======================================== */
+
+  .filterCloseButton {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 10;
+  }
+
+  .filterCloseButton:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  /* ========================================
+     Table
+  ======================================== */
+
+  .tableCard {
+    border-radius: 12px;
+  }
+
+  .toolbar {
+    min-height: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+    gap: 16px;
+  }
+
+  .toolbarLeft {
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .toolbarRight {
+    width: auto;
+    flex: 0 0 auto;
+    justify-content: flex-end;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 425px) {
+  .searchInput {
+    width: clamp(188px, 40vw, 340px);
+    min-width: 188px;
+    max-width: 340px;
+  }
+}
