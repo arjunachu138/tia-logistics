@@ -46,10 +46,8 @@ export const NON_RETAIL_API_ENDPOINTS = {
   GET_INV_LISTING_COUNTS: `${BASE_URL}TCG810/GetInvoiceListingCounts`,
   GET_PO_LISTING_COUNTS: `${BASE_URL}TCG850/GetPOListingCounts`,
   GET_ASN_LISTING_COUNTS: `${BASE_URL}TCG856/GetASNListingCounts`,
-  GET_DELFOR_DETAILS:
-    "https://tia-gateway-qa.azurewebsites.net/DelFor/GetDelForById/",
-  GET_DELFOR_LINE_ITEMS:
-    "https://tia-gateway-qa.azurewebsites.net/DelFor/GetDelForDetailsById",
+  GET_DELFOR_DETAILS: `${BASE_URL}DelFor/GetDelForById/`,
+  GET_DELFOR_LINE_ITEMS: `${BASE_URL}DelFor/GetDelForDetailsById`,
   GET_DELFOR_ITEM_PDF: `${BASE_URL}Delfor/GenerateDELFORITEMPDF`,
   GET_DELFOR_BACKLOG_QUANTITY: `${BASE_URL}DelFor/ViewBacklogQuantity/`,
   GET_DELFOR_ITEM_STATUS: `${BASE_URL}DelFor/ViewDelforItemStatus/`,
@@ -58,7 +56,6 @@ export const NON_RETAIL_API_ENDPOINTS = {
   GET_DELJIT_STATUSES: `${BASE_URL}Analytics/GetDocumentStatuses/Delivery Forecast`,
   GET_DELJIT_REPORT: `${BASE_URL}DelJit/GetDeljitReport/`,
 
-  PUSH_PO_ACKNOWLEDGEMENT:
-    "https://tia-gateway-qa.azurewebsites.net/Doc855/PushPOAcknowledge",
+  PUSH_PO_ACKNOWLEDGEMENT: `${BASE_URL}Doc855/PushPOAcknowledge`,
   GET_EDI_FILE_BY_DOC_TYPE: `${BASE_URL}PurchaseOrder/GetEDIFileByDocType/`,
 } as const;

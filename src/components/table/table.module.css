@@ -466,3 +466,50 @@ td.expandedCell {
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border-primary);
 }
+
+/* ===========================
+   Horizontal Loading Skeletons
+=========================== */
+
+.skeletonRow {
+  background: transparent;
+}
+
+.table tbody tr.skeletonRow:hover {
+  background: transparent !important;
+}
+
+.skeletonCell {
+  height: 52px;
+  box-sizing: border-box;
+  padding: 0 24px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border-primary, #eaecf0);
+}
+
+.skeletonBar {
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e9edf4 0%, #f5f7fb 35%, #e9edf4 70%);
+  background-size: 200% 100%;
+  animation: tableSkeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeletonCheckbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #e9edf4 0%, #f5f7fb 35%, #e9edf4 70%);
+  background-size: 200% 100%;
+  animation: tableSkeletonShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes tableSkeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

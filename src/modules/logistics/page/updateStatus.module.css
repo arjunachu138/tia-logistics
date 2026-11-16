@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-bottom: 120px;
+  box-sizing: border-box;
 }
 
 .card {
@@ -148,7 +150,6 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-
 
 .breadcrumbLink {
   cursor: pointer;

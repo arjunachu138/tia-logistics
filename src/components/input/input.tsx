@@ -11,6 +11,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   fullWidth?: boolean;
   disableMessage?: boolean;
   required?: boolean;
+  readOnly?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -23,6 +24,7 @@ const Input: React.FC<InputProps> = ({
   fullWidth = true,
   disableMessage = false,
   required = false,
+  readOnly = false,
   className = "",
   id,
   type,
@@ -52,7 +54,8 @@ const Input: React.FC<InputProps> = ({
           {...props}
           id={id}
           type={type}
-          className={`${styles.input} ${className}`}
+          readOnly={readOnly}
+          className={`${styles.input} ${className} ${readOnly ? styles.readOnly : ""}`}
           onKeyDown={(e) => {
             if (type === "number" && ["+", "-", "e", "E"].includes(e.key)) {
               e.preventDefault();

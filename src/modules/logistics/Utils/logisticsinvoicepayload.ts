@@ -1,53 +1,5 @@
 import type { LogisticsInvoicesFilters } from "../../../shared/types/logistics";
 
-interface InvoiceDataTableColumn {
-  data: string;
-  name: string;
-  searchable: boolean;
-  orderable: boolean;
-  search: {
-    value: string;
-    regex: boolean;
-  };
-}
-
-const createColumn = (
-  data: string,
-  name: string,
-  orderable = false,
-): InvoiceDataTableColumn => ({
-  data,
-  name,
-  searchable: true,
-  orderable,
-  search: {
-    value: "",
-    regex: false,
-  },
-});
-
-const invoiceColumns: InvoiceDataTableColumn[] = [
-  createColumn("erpName", "ErpName"),
-  createColumn("reciever", "Reciever"),
-  createColumn("messages", "Messages"),
-  createColumn("region", "Region"),
-  createColumn("partnerName", "PartnerName"),
-  createColumn("sender", "Sender"),
-  createColumn("poNumber", "PONumber", true),
-  createColumn("poDate", "DocumentDate", true),
-  createColumn("shipDate", "ShipDate", true),
-  createColumn("status", "Status", true),
-  createColumn("", ""),
-  createColumn("poAcknowledgedStatus", "A"),
-  createColumn("sentToWareHouseStatus", "W"),
-  createColumn("shippedStatus", "S"),
-  createColumn("invoicedStatus", "I"),
-  createColumn("remittanceStatus", "R"),
-  createColumn("logoURL", "LogoURL"),
-  createColumn("preparingShipmentStatus", "p"),
-  createColumn("poHeaderId", "POHeaderId", true),
-];
-
 export const buildLogisticsInvoicesPayload = (
   filters: LogisticsInvoicesFilters,
   subOrgLocId: number,
@@ -58,11 +10,202 @@ export const buildLogisticsInvoicesPayload = (
 ) => ({
   dataTablesParameters: {
     draw: 1,
-    columns: invoiceColumns,
+    columns: [
+      {
+        Data: "erpName",
+        Name: "ErpName",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "reciever",
+        Name: "Reciever",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "messages",
+        Name: "Messages",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "region",
+        Name: "Region",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "partnerName",
+        Name: "PartnerName",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "sender",
+        Name: "Sender",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "poNumber",
+        Name: "PONumber",
+        Searchable: true,
+        Orderable: true,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "poDate",
+        Name: "DocumentDate",
+        Searchable: true,
+        Orderable: true,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "shipDate",
+        Name: "ShipDate",
+        Searchable: true,
+        Orderable: true,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "status",
+        Name: "Status",
+        Searchable: true,
+        Orderable: true,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "",
+        Name: "",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "poAcknowledgedStatus",
+        Name: "A",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "sentToWareHouseStatus",
+        Name: "W",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "shippedStatus",
+        Name: "S",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "invoicedStatus",
+        Name: "I",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "remittanceStatus",
+        Name: "R",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "logoURL",
+        Name: "LogoURL",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "preparingShipmentStatus",
+        Name: "p",
+        Searchable: true,
+        Orderable: false,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+      {
+        Data: "poHeaderId",
+        Name: "POHeaderId",
+        Searchable: true,
+        Orderable: true,
+        Search: {
+          Value: "",
+          Regex: false,
+        },
+      },
+    ],
     order: [
       {
-        column: 7,
-        dir: "desc" as const,
+        Column: 7,
+        Dir: "desc",
       },
     ],
     start,

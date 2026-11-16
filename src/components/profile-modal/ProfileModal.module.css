@@ -25,7 +25,7 @@
 .modal {
   position: relative;
   width: 100%;
-  max-width: 520px;
+  max-width: 720px;
   background: var(--color-surface);
   border-radius: 24px;
   padding: 24px 28px 20px;

@@ -5,37 +5,6 @@ import AppImage from "../appimage/appimage";
 import { icons } from "../../assets/icons";
 import { images } from "../../assets/images";
 
-const SETTINGS_CONFIG: Record<
-  string,
-  { icon: string; width: string; height: string }
-> = {
-  "Advance Ship Notice": {
-    icon: icons.shippingIconB,
-    width: "20px",
-    height: "20px",
-  },
-  "Purchase Order": {
-    icon: icons.documentIconB,
-    width: "16px",
-    height: "20px",
-  },
-  "Supply Invoice": {
-    icon: icons.invoiceDark,
-    width: "20px",
-    height: "20px",
-  },
-  "Delivery Forecast": {
-    icon: icons.fileClockIconB,
-    width: "20px",
-    height: "20px",
-  },
-  "Load tender": {
-    icon: icons.logiMenuB,
-    width: "20px",
-    height: "20px",
-  },
-};
-
 export interface ProfileModalProps {
   open: boolean;
   onClose: () => void;
@@ -55,10 +24,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
 }) => {
   const reduxUserDetails = useAppSelector((state) => state.user.userDetails);
   console.log("user Details ", reduxUserDetails);
-
-  const availableSettings = (reduxUserDetails?.settings ?? []).filter(
-    (setting) => SETTINGS_CONFIG[setting.moduleName],
-  );
 
   // Close on Escape key
   useEffect(() => {
@@ -176,34 +141,6 @@ const ProfileModal: React.FC<ProfileModalProps> = ({
             <AppImage iconPath={icons.emailIcon} width="19px" height="19px" />
             <span className={styles.contactEmailText}>{displayEmail}</span>
           </div>
-        </div>
-
-        {/* Divider */}
-        <div className={styles.divider} />
-
-        {/* Settings */}
-
-        <h4 className={styles.sectionTitle}>Settings</h4>
-
-        <div className={styles.settingsList}>
-          {availableSettings.map((setting, index) => {
-            const config = SETTINGS_CONFIG[setting.moduleName];
-
-            return (
-              <div
-                key={`${setting.moduleName}-${index}`}
-                className={styles.settingItem}
-              >
-                <AppImage
-                  iconPath={config.icon}
-                  width={config.width}
-                  height={config.height}
-                />
-
-                <span className={styles.settingText}>{setting.moduleName}</span>
-              </div>
-            );
-          })}
         </div>
 
         {/* Divider */}

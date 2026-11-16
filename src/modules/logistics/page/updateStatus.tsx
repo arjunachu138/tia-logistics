@@ -472,7 +472,10 @@ const UpdateStatus: React.FC = () => {
           ...(Array.isArray(scRes?.default) ? scRes.default : []),
           ...(Array.isArray(scRes?.tpSpecific) ? scRes.tpSpecific : []),
         ];
-        const scOpts = buildOptions(allSc);
+        const scOpts = [
+          { label: "--Select--", value: "" },
+          ...buildOptions(allSc),
+        ];
         if (scOpts.length > 0) setStatusCodeOptions(scOpts);
       } catch (err) {
         console.warn("Could not load SC mapping, using defaults:", err);
@@ -489,7 +492,10 @@ const UpdateStatus: React.FC = () => {
           ...(Array.isArray(rcRes?.default) ? rcRes.default : []),
           ...(Array.isArray(rcRes?.tpSpecific) ? rcRes.tpSpecific : []),
         ];
-        const rcOpts = buildOptions(allRc);
+        const rcOpts = [
+          { label: "--Select--", value: "" },
+          ...buildOptions(allRc),
+        ];
         if (rcOpts.length > 0) setReasonCodeOptions(rcOpts);
       } catch (err) {
         console.warn("Could not load RC mapping, using defaults:", err);
@@ -506,7 +512,10 @@ const UpdateStatus: React.FC = () => {
           ...(Array.isArray(acRes?.default) ? acRes.default : []),
           ...(Array.isArray(acRes?.tpSpecific) ? acRes.tpSpecific : []),
         ];
-        const acOpts = buildOptions(allAc);
+        const acOpts = [
+          { label: "--Select--", value: "" },
+          ...buildOptions(allAc),
+        ];
         if (acOpts.length > 0) setAppointmentCodeOptions(acOpts);
       } catch (err) {
         console.warn("Could not load AC mapping, using defaults:", err);
@@ -901,6 +910,7 @@ const UpdateStatus: React.FC = () => {
           <Input
             label="Shipment Number"
             required
+            readOnly={true}
             placeholder="Enter Shipment Number"
             value={shipmentNumber}
             error={errors.shipmentNumber}
@@ -941,6 +951,7 @@ const UpdateStatus: React.FC = () => {
 
           <DateInput
             label="Status Date"
+            timePicker
             required
             placeholder="DD/MM/YYYY"
             value={statusDate}
@@ -949,7 +960,7 @@ const UpdateStatus: React.FC = () => {
               setStatusDate(val);
               clearFieldError("statusDate");
             }}
-            format="DD/MM/YYYY"
+            format="DD/MM/YYYY HH:mm A"
           />
 
           <Input
@@ -976,7 +987,7 @@ const UpdateStatus: React.FC = () => {
             <Input
               label="Notes"
               placeholder="Enter Notes"
-              required={Boolean(reasonCode.trim)}
+              required={Boolean(reasonCode.trim() === "" ? false : true)}
               value={notes}
               onChange={(e) => {
                 setNotes(e.target.value);
@@ -1024,7 +1035,8 @@ const UpdateStatus: React.FC = () => {
             placeholder="DD/MM/YYYY"
             value={startDate}
             onChange={(val) => setStartDate(val)}
-            format="DD/MM/YYYY"
+            timePicker
+            format="DD/MM/YYYY HH:mm A"
           />
 
           <DateInput
@@ -1033,7 +1045,8 @@ const UpdateStatus: React.FC = () => {
             placeholder="DD/MM/YYYY"
             value={finishDate}
             onChange={(val) => setFinishDate(val)}
-            format="DD/MM/YYYY"
+            timePicker
+            format="DD/MM/YYYY HH:mm A"
           />
         </div>
         {statusCode === "BORDER" && (
@@ -1052,6 +1065,7 @@ const UpdateStatus: React.FC = () => {
           <Input
             label="Probill Number"
             required
+            readOnly={true}
             placeholder="Enter Probill Number"
             value={probillNumber}
             error={errors.probillNumber}
@@ -1063,6 +1077,7 @@ const UpdateStatus: React.FC = () => {
 
           <Input
             label="Trading Partner"
+            readOnly={true}
             required
             placeholder="Enter Trading Partner"
             value={tradingPartner}
@@ -1153,7 +1168,8 @@ const UpdateStatus: React.FC = () => {
             placeholder="DD/MM/YYYY"
             value={eta}
             onChange={(val) => setEta(val)}
-            format="DD/MM/YYYY"
+            timePicker
+            format="DD/MM/YYYY HH:mm A"
           />
         </div>
       </div>

@@ -13,7 +13,7 @@ import type { MultiSelectDropdownOption } from "../../../components/multi-select
 import styles from "./logistics-invoices.module.css";
 import type { Dayjs } from "dayjs";
 import type { Column } from "../../../components/table/table";
-import { useSort } from "../../../shared/hooks/useSort";
+
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { Tooltip } from "@mui/material";
@@ -29,6 +29,7 @@ interface PORow {
   poNo: string;
   invoiceNo: string;
   deliveryDate: string;
+  deliveryDateTimestamp: number;
   totalCharge: string;
   invoiceId: string;
   view: boolean;
@@ -44,10 +45,12 @@ const LogisticsInvoices = () => {
 
   const partnerOptions = useMemo<MultiSelectDropdownOption[]>(
     () =>
-      partnerDetails?.map((item) => ({
-        label: item.soName ?? "",
-        value: String(item.soLocID),
-      })) ?? [],
+      partnerDetails
+        ?.map((item) => ({
+          label: item.soName ?? "",
+          value: String(item.soLocID),
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)) ?? [],
     [partnerDetails],
   );
 
@@ -69,14 +72,14 @@ const LogisticsInvoices = () => {
     {
       key: "deliveryDate",
       title: "Delivery Date",
-      sortable: true,
+
       type: "string",
       width: 240,
     },
     {
       key: "totalCharge",
       title: "Total Charge",
-      sortable: true,
+
       type: "string",
       width: 140,
     },
@@ -118,6 +121,7 @@ const LogisticsInvoices = () => {
   const [totalRecords, setTotalRecords] = useState(0);
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [appliedFilters, setAppliedFilters] = useState<InvoiceFilterValues>({
     fromDate: null,
@@ -125,13 +129,10 @@ const LogisticsInvoices = () => {
     partnerOrganization: [],
   });
 
-  const { sortedData, sortColumn, sortDirection, handleSort } = useSort(
-    invoiceRows,
-    "deliveryDate",
-  );
-
   const totalPages = Math.max(1, Math.ceil(totalRecords / pageSize));
-  const pageData = sortedData;
+  console.log(invoiceRows);
+
+  const pageData = invoiceRows;
 
   const handleSearch = (value: string) => {
     setSearch(value);
@@ -173,6 +174,7 @@ const LogisticsInvoices = () => {
     let isCurrent = true;
 
     const fetchInvoices = async () => {
+      setLoading(true);
       try {
         const response = await logisticsService.getLogisticsInvoicesList(
           {
@@ -184,6 +186,7 @@ const LogisticsInvoices = () => {
               : null,
             partnerOrganization: appliedFilters.partnerOrganization,
           },
+
           subOrgLocId,
           roleType,
           (page - 1) * pageSize,
@@ -192,17 +195,25 @@ const LogisticsInvoices = () => {
         );
 
         if (!isCurrent) return;
+        console.log(response.data);
 
-        const mappedRows: PORow[] = response.data.map((invoice) => ({
-          poNo: invoice.shipmentIdentifcationNo,
-          invoiceNo: invoice.invoiceNumber,
-          deliveryDate: dayjs(invoice.deliveryDate).isValid()
-            ? dayjs(invoice.deliveryDate).format("DD MMM YYYY | hh:mmA")
-            : "-",
-          totalCharge: String(invoice.totalCharge),
-          view: true,
-          invoiceId: invoice.invoiceId,
-        }));
+        const mappedRows: PORow[] = response.data.map((invoice) => {
+          const parsedDate = dayjs(invoice.deliveryDate);
+
+          return {
+            poNo: invoice.shipmentIdentifcationNo,
+            invoiceNo: invoice.invoiceNumber,
+            deliveryDate: parsedDate.isValid()
+              ? parsedDate.format("DD MMM YYYY | hh:mm A")
+              : "-",
+            deliveryDateTimestamp: parsedDate.isValid()
+              ? parsedDate.valueOf()
+              : 0,
+            totalCharge: `$ ${String(invoice.totalCharge)}`,
+            view: true,
+            invoiceId: invoice.invoiceId,
+          };
+        });
 
         setInvoiceRows(mappedRows);
         setTotalRecords(response.recordsTotal);
@@ -212,6 +223,8 @@ const LogisticsInvoices = () => {
           setInvoiceRows([]);
           setTotalRecords(0);
         }
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -300,7 +313,7 @@ const LogisticsInvoices = () => {
               inputContainerClass={styles.searchInput}
               type="text"
               value={search}
-              placeholder="Search Invoice Number"
+              placeholder="Search Invoice / PO Number"
               disableMessage
               endIcon={
                 <AppImage
@@ -319,12 +332,10 @@ const LogisticsInvoices = () => {
           data={pageData}
           showPagination
           page={page}
+          loading={loading}
           totalPages={totalPages}
           pageSize={pageSize}
           totalRecords={totalRecords}
-          sortColumn={sortColumn}
-          sortDirection={sortDirection}
-          onSort={handleSort}
           onPageChange={setPage}
           onPageSizeChange={handlePageSizeChange}
         />

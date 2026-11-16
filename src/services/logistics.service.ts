@@ -23,11 +23,6 @@ import type {
 import { httpClient } from "./httpclient";
 
 class LogisticService {
-  private ediCodeMappingCache = new Map<
-    string,
-    Promise<EDICodeToStatusMappingResponse>
-  >();
-
   async getLoadTenders(
     payload: LoadTenderListRequest,
   ): Promise<LoadTenderListResponse> {
@@ -183,25 +178,26 @@ class LogisticService {
     codeType: string,
     solocid: number,
   ): Promise<EDICodeToStatusMappingResponse> {
-    const cacheKey = `${codeType}_${solocid}`;
-    if (this.ediCodeMappingCache.has(cacheKey)) {
-      return this.ediCodeMappingCache.get(cacheKey)!;
-    }
-
     const params = new URLSearchParams({
       codeType,
       solocid: String(solocid),
     });
 
-    const url = `${LOGISTICS_API_ENDPOINTS.GET_LOGISTICS_CONFIG_STATUS}?${params.toString()}`;
+    const url = `${
+      LOGISTICS_API_ENDPOINTS.GET_LOGISTICS_CONFIG_STATUS
+    }?${params.toString()}`;
 
-    const promise = httpClient.apihelper(HTTP_METHODS.GET, url).catch((err) => {
-      this.ediCodeMappingCache.delete(cacheKey);
-      throw err;
-    });
-
-    this.ediCodeMappingCache.set(cacheKey, promise);
-    return promise;
+    return httpClient.apihelper(
+      HTTP_METHODS.GET,
+      url,
+      true,
+      undefined,
+      {},
+      "json",
+      {
+        cache: 5 * 60 * 1000, // 5 minutes
+      },
+    );
   }
 
   async getShipmentStatusesForTradingPartner(

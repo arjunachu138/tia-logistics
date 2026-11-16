@@ -35,6 +35,7 @@ export interface TableProps<T> {
   data: T[];
 
   loading?: boolean;
+  loadingRowsCount?: number;
 
   // Dashboard header (title + view-all link)
   title?: string;
@@ -80,6 +81,7 @@ function Table<T extends object>({
   data,
 
   loading = false,
+  loadingRowsCount,
 
   title,
   count,
@@ -109,6 +111,8 @@ function Table<T extends object>({
   rowClassName,
 }: TableProps<T>) {
   const allSelected = data.length > 0 && selectedRows.length === data.length;
+  const skeletonCount =
+    loadingRowsCount ?? Math.min(Math.max(pageSize || 5, 5), 8);
 
   return (
     <div className={`${styles.tableContainer} ${className}`}>
@@ -121,6 +125,7 @@ function Table<T extends object>({
               <span className={styles.count}>({count})</span>
             )}
           </h2>
+
           {onViewAllClick && (
             <button
               type="button"
@@ -147,9 +152,10 @@ function Table<T extends object>({
                   />
                 </th>
               )}
+
               {columns.map((column) => {
-                const isSticky =
-                  stickyActionColumn && String(column.key) === actionColumnKey;
+                const isStickyAction =
+                  stickyActionColumn && column.key === actionColumnKey;
 
                 return (
                   <th
@@ -158,15 +164,17 @@ function Table<T extends object>({
                       width: column.width,
                       textAlign: column.align ?? "left",
                     }}
-                    className={isSticky ? styles.stickyRight : ""}
+                    className={isStickyAction ? styles.stickyRight : ""}
                   >
                     <button
                       type="button"
-                      className={styles.headerButton}
-                      disabled={!column.sortable}
+                      className={styles.thInner}
                       onClick={() =>
                         column.sortable && onSort?.(column.key as keyof T)
                       }
+                      style={{
+                        cursor: column.sortable ? "pointer" : "default",
+                      }}
                     >
                       {column.title}
 
@@ -186,14 +194,58 @@ function Table<T extends object>({
 
           <tbody>
             {loading ? (
-              <tr>
-                <td
-                  colSpan={columns.length + (showCheckbox ? 1 : 0)}
-                  className={styles.emptyState}
+              Array.from({ length: skeletonCount }).map((_, rowIndex) => (
+                <tr
+                  key={`skeleton-row-${rowIndex}`}
+                  className={styles.skeletonRow}
                 >
-                  Loading…
-                </td>
-              </tr>
+                  {showCheckbox && (
+                    <td
+                      className={`${styles.checkboxColumn} ${styles.skeletonCell}`}
+                    >
+                      <div
+                        className={styles.skeletonCheckbox}
+                        style={{
+                          animationDelay: `${rowIndex * 0.08}s`,
+                        }}
+                      />
+                    </td>
+                  )}
+                  {columns.map((column, colIndex) => {
+                    const widthPattern = [70, 85, 60, 92, 75, 80, 65, 88];
+                    const boxWidth = `${widthPattern[(rowIndex + colIndex) % widthPattern.length]}%`;
+                    const isStickyAction =
+                      stickyActionColumn && column.key === actionColumnKey;
+
+                    return (
+                      <td
+                        key={`skeleton-cell-${colIndex}`}
+                        className={`${styles.skeletonCell} ${
+                          isStickyAction ? styles.stickyRight : ""
+                        }`}
+                        style={{
+                          width: column.width,
+                          textAlign: column.align ?? "left",
+                        }}
+                      >
+                        <div
+                          className={styles.skeletonBar}
+                          style={{
+                            width: boxWidth,
+                            maxWidth: "100%",
+                            animationDelay: `${(rowIndex * 0.08 + colIndex * 0.04).toFixed(2)}s`,
+                            ...(column.align === "center"
+                              ? { margin: "0 auto" }
+                              : column.align === "right"
+                                ? { marginLeft: "auto" }
+                                : {}),
+                          }}
+                        />
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))
             ) : data.length === 0 ? (
               <tr>
                 <td
@@ -206,8 +258,12 @@ function Table<T extends object>({
             ) : (
               data.map((row, rowIndex) => {
                 const isSelected = selectedRows.includes(rowIndex);
-                const expanded = isRowExpanded ? isRowExpanded(row, rowIndex) : false;
-                const customRowClass = rowClassName ? rowClassName(row, rowIndex) : "";
+                const expanded = isRowExpanded
+                  ? isRowExpanded(row, rowIndex)
+                  : false;
+                const customRowClass = rowClassName
+                  ? rowClassName(row, rowIndex)
+                  : "";
                 const totalColumns = columns.length + (showCheckbox ? 1 : 0);
 
                 return (
@@ -229,13 +285,16 @@ function Table<T extends object>({
                         </td>
                       )}
                       {columns.map((column) => {
-                        const value = (row as Record<string, unknown>)[column.key as string];
+                        const value = (row as Record<string, unknown>)[
+                          column.key as string
+                        ];
                         return (
                           <td
                             key={String(column.key)}
                             style={{ textAlign: column.align ?? "left" }}
                             className={
-                              stickyActionColumn && column.key === actionColumnKey
+                              stickyActionColumn &&
+                              column.key === actionColumnKey
                                 ? styles.stickyRight
                                 : ""
                             }

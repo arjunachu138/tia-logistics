@@ -8,5 +8,7 @@ export const usePartnerDetails = (soId: number) => {
     queryKey: ["partnerDetails", soId],
     queryFn: () => logisticsService.getPartnerDetails(soId),
     enabled: !!soId,
+    staleTime: 10 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
   });
 };

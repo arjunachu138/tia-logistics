@@ -5,4 +5,5 @@ export const logout = createAction("app/logout");
 
 export const clearSession = () => {
   httpClient.setAuthorizationToken("");
+  httpClient.clearCache();
 };

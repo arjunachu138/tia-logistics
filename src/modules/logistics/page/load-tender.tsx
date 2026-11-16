@@ -14,7 +14,7 @@ import styles from "./load-tender.module.css";
 import type { Dayjs } from "dayjs";
 import { useClickOutside } from "../../../shared/hooks/useClickOutside";
 import type { Column } from "../../../components/table/table";
-import { useSort } from "../../../shared/hooks/useSort";
+
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import { Tooltip } from "@mui/material";
@@ -204,34 +204,36 @@ const LoadTenders = () => {
 
   const partnerOptions = useMemo<MultiSelectDropdownOption[]>(
     () =>
-      partnerDetails?.map((item) => ({
-        label: item.soName ?? "",
-        value: String(item.soLocID),
-      })) ?? [],
+      partnerDetails
+        ?.map((item) => ({
+          label: item.soName ?? "",
+          value: String(item.soLocID),
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)) ?? [],
     [partnerDetails],
   );
 
   const poColumns: Column<PORow>[] = [
-    { key: "srNo", title: "SR NO", width: 70, sortable: false, type: "number" },
-    { key: "customer", title: "Customer", sortable: false, type: "string" },
+    { key: "srNo", title: "SR NO", width: 70, type: "number" },
+    { key: "customer", title: "Customer", type: "string" },
     {
       key: "shipmentNo",
       title: "Shipment Number",
-      sortable: true,
+
       type: "string",
     },
     {
       key: "tenderReceiveDate",
       title: "Tender Received On",
-      sortable: true,
+
       type: "date",
     },
 
-    { key: "status", title: "Status", sortable: true, type: "string" },
+    { key: "status", title: "Status", type: "string" },
     {
       key: "routeId",
       title: "Route ID",
-      sortable: true,
+
       type: "string",
     },
 
@@ -335,8 +337,12 @@ const LoadTenders = () => {
 
   const [advanceFilterOpen, setAdvanceFilterOpen] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
-  const [fromDate, setFromDate] = useState<Dayjs | null>(null);
-  const [toDate, setToDate] = useState<Dayjs | null>(null);
+  const [fromDate, setFromDate] = useState<Dayjs | null>(
+    dayjs().subtract(1, "month").startOf("day"),
+  );
+  const [toDate, setToDate] = useState<Dayjs | null>(
+    dayjs().endOf("day") as Dayjs | null,
+  );
   const [status, setStatus] = useState<string[]>([]);
   const [customer, setCustomer] = useState<string[]>([]);
   const [routeId, setRouteId] = useState<string[]>([]);
@@ -347,12 +353,29 @@ const LoadTenders = () => {
     MultiSelectDropdownOption[]
   >([]);
   const [appliedFilters, setAppliedFilters] = useState({
-    fromDate: null as Dayjs | null,
-    toDate: null as Dayjs | null,
+    fromDate: dayjs().subtract(1, "month").startOf("day") as Dayjs | null,
+    toDate: dayjs().endOf("day") as Dayjs | null,
     status: [] as string[],
     customer: [] as string[],
     routeId: [] as string[],
   });
+
+  const usedFiltersCount = useMemo(() => {
+    let count = 0;
+    if (appliedFilters.fromDate || appliedFilters.toDate) {
+      count += 1;
+    }
+    if (appliedFilters.status && appliedFilters.status.length > 0) {
+      count += 1;
+    }
+    if (appliedFilters.customer && appliedFilters.customer.length > 0) {
+      count += 1;
+    }
+    if (appliedFilters.routeId && appliedFilters.routeId.length > 0) {
+      count += 1;
+    }
+    return count;
+  }, [appliedFilters]);
 
   const handleClose = () => {
     setAdvanceFilterOpen(false);
@@ -372,17 +395,20 @@ const LoadTenders = () => {
   };
 
   const handleClearFilters = () => {
+    const defaultFrom = dayjs().subtract(1, "month").startOf("day");
+    const defaultTo = dayjs().endOf("day");
+
     // Reset filter inputs
-    setFromDate(null);
-    setToDate(null);
+    setFromDate(defaultFrom);
+    setToDate(defaultTo);
     setStatus([]);
     setCustomer([]);
     setRouteId([]);
 
     // Reset applied filters
     setAppliedFilters({
-      fromDate: null,
-      toDate: null,
+      fromDate: defaultFrom as Dayjs | null,
+      toDate: defaultTo as Dayjs | null,
       status: [],
       customer: [],
       routeId: [],
@@ -448,14 +474,9 @@ const LoadTenders = () => {
     );
   });
 
-  const { sortedData, sortColumn, sortDirection, handleSort } = useSort(
-    filtered,
-    "customer",
-  );
-
   const totalPages = Math.max(1, Math.ceil(totalRecords / pageSize));
 
-  const pageData = sortedData.map((row, index) => ({
+  const pageData = filtered.map((row, index) => ({
     ...row,
     srNo: String((page - 1) * pageSize + index + 1).padStart(2, "0"),
   }));
@@ -564,11 +585,11 @@ const LoadTenders = () => {
       const start = (page - 1) * pageSize;
 
       const fromDateValue = appliedFilters.fromDate
-        ? [appliedFilters.fromDate.format("DD-MM-YYYY HH:mm:ss")]
+        ? [appliedFilters.fromDate.format("DD-MM-YYYY") + " 12:00:00"]
         : [];
 
       const toDateValue = appliedFilters.toDate
-        ? [appliedFilters.toDate.format("DD-MM-YYYY HH:mm:ss")]
+        ? [appliedFilters.toDate.format("DD-MM-YYYY") + " 12:00:00"]
         : [];
 
       const payload: LoadTenderListRequest = {
@@ -697,6 +718,9 @@ const LoadTenders = () => {
               >
                 <AppImage iconPath={icons.FIlterIcon} width="20" height="20" />
                 <span>Advance filter</span>
+                {usedFiltersCount > 0 && (
+                  <span className={styles.filterBadge}>{usedFiltersCount}</span>
+                )}
               </button>
             </div>
           </div>
@@ -822,9 +846,8 @@ const LoadTenders = () => {
           totalPages={totalPages}
           pageSize={pageSize}
           totalRecords={totalRecords}
-          sortColumn={sortColumn}
-          sortDirection={sortDirection}
-          onSort={handleSort}
+          sortColumn={"tenderReceiveDate"}
+          sortDirection={"desc"}
           onPageChange={setPage}
           onPageSizeChange={(size) => {
             setPageSize(size);

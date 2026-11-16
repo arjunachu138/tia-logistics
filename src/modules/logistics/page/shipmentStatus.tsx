@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Breadcrumbs, Link, Typography } from "@mui/material";
 import { useAppSelector } from "../../../store/hooks";
 import {
@@ -230,6 +230,7 @@ const mapHistoryRecordsToItems = (
 
 const ShipmentStatus: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { id } = useParams<{ id: string }>();
   const subOrgLocId = useAppSelector(selectSolocId);
   const roleType = useAppSelector(selectUserRole);
@@ -286,7 +287,7 @@ const ShipmentStatus: React.FC = () => {
 
   useEffect(() => {
     fetchStatusList();
-  }, [fetchStatusList]);
+  }, [fetchStatusList, location.key]); // Refetch when location changes (e.g., navigating back to this page)
 
   // ─── Fetch status history ────────────────────────────────────────────────
 

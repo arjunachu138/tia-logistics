@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress, LinearProgress } from "@mui/material";
 
 import { images } from "../../../assets/images";
 import ForgotPasswordModal from "../components/forgot-password-modal/forgotPasswordModal";
@@ -56,6 +57,7 @@ const Login: React.FC = () => {
     isRequired: true,
     checkValidation: [FIELD_TYPES.EMAIL],
     value: username,
+    disabled: isSubmitting,
   };
 
   const passwordField: FieldData = {
@@ -66,6 +68,7 @@ const Login: React.FC = () => {
     isRequired: true,
     errorLabel: "Password",
     value: password,
+    disabled: isSubmitting,
   };
 
   const handleFieldChange = (name: string, value: unknown) => {
@@ -93,7 +96,7 @@ const Login: React.FC = () => {
       const response = await authService.login({ username, password });
       dispatch(setUserDetails(response));
       httpClient.setAuthorizationToken(response.token);
-      navigate("/logistics/load-tenders");
+      navigate("/");
     } catch (error) {
       setError("Invalid username or password");
       showToast(
@@ -119,6 +122,21 @@ const Login: React.FC = () => {
           <div className={styles.header}>
             <h1 className={styles.title}>Sign In</h1>
           </div>
+
+          {isSubmitting && (
+            <div style={{ width: "100%", marginBottom: "16px" }}>
+              <LinearProgress
+                sx={{
+                  height: 3,
+                  borderRadius: 2,
+                  backgroundColor: "#e2e8f0",
+                  "& .MuiLinearProgress-bar": {
+                    backgroundColor: "var(--color-primary, #0052cc)",
+                  },
+                }}
+              />
+            </div>
+          )}
 
           <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {/* Username / Email */}
@@ -153,6 +171,15 @@ const Login: React.FC = () => {
               title={isSubmitting ? "Logging in..." : "Login"}
               className={styles.loginBtn}
               disabled={isSubmitting}
+              icon={
+                isSubmitting ? (
+                  <CircularProgress
+                    size={18}
+                    thickness={5}
+                    sx={{ color: "#ffffff", display: "flex" }}
+                  />
+                ) : undefined
+              }
             />
 
             {/* Forgot Password */}
@@ -161,6 +188,7 @@ const Login: React.FC = () => {
                 type="button"
                 className={styles.forgotPasswordLink}
                 onClick={() => setIsForgotModalOpen(true)}
+                disabled={isSubmitting}
               >
                 Forgot Password?
               </button>
@@ -179,6 +207,7 @@ const Login: React.FC = () => {
               title="Login via Microsoft"
               className={styles.ssoBtn}
               onClick={handleMicrosoftLogin}
+              disabled={isSubmitting}
               icon={
                 <AppImage
                   iconPath={images.microsoftLogo}

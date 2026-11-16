@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Breadcrumbs, Link, Typography, CircularProgress } from "@mui/material";
 
-import { Table, ToCard } from "../../../components";
+import { Button, Table, ToCard } from "../../../components";
 import type { Column } from "../../../components/table/table";
 import { logisticsService } from "../../../services";
 import type {
@@ -160,6 +160,7 @@ const LogisticsInvoiceDetails = () => {
   const [invoice, setInvoice] = useState<LogisticsInvoiceDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -207,7 +208,7 @@ const LogisticsInvoiceDetails = () => {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, retryCount]);
 
   const backToInvoices = () => {
     navigate("/logistics/invoices");
@@ -216,8 +217,46 @@ const LogisticsInvoiceDetails = () => {
   if (loading) {
     return (
       <div className={styles.poDetailContainer}>
-        <CircularProgress size={32} />
-        <Typography>Loading invoice details...</Typography>
+        <Breadcrumbs aria-label="breadcrumb" separator="/">
+          <Link
+            onClick={() => navigate("/")}
+            className={styles.stateActions}
+            underline="none"
+            sx={{
+              color: "#434343",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            onClick={() => navigate("/logistics/invoices")}
+            className={styles.stateActions}
+            underline="none"
+            sx={{
+              color: "#141414",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Invoice
+          </Link>
+          <Typography
+            sx={{ color: "#7b7b7b", fontSize: "13px", fontWeight: 500 }}
+          >
+            Loading...
+          </Typography>
+        </Breadcrumbs>
+        <div className={styles.stateContainer}>
+          <CircularProgress
+            size={36}
+            sx={{ color: "var(--color-primary, #0E6B5C)" }}
+          />
+          <p className={styles.stateMessage}>Loading invoice details...</p>
+        </div>
       </div>
     );
   }
@@ -225,13 +264,58 @@ const LogisticsInvoiceDetails = () => {
   if (error || !invoice) {
     return (
       <div className={styles.poDetailContainer}>
-        <Typography variant="h6">Unable to load invoice</Typography>
-        <Typography color="text.secondary">
-          {error ?? "Invoice details were not found."}
-        </Typography>
-        <button type="button" onClick={backToInvoices}>
-          Back to Invoices
-        </button>
+        <Breadcrumbs aria-label="breadcrumb" separator="/">
+          <Link
+            onClick={() => navigate("/")}
+            className={styles.stateActions}
+            underline="none"
+            sx={{
+              color: "#434343",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            onClick={() => navigate("/logistics/invoices")}
+            className={styles.stateActions}
+            underline="none"
+            sx={{
+              color: "#141414",
+              fontSize: "13px",
+              fontWeight: 600,
+              cursor: "pointer",
+            }}
+          >
+            Invoice
+          </Link>
+          <Typography
+            sx={{ color: "#7b7b7b", fontSize: "13px", fontWeight: 500 }}
+          >
+            Error
+          </Typography>
+        </Breadcrumbs>
+        <div className={styles.stateContainer}>
+          <h2 className={styles.stateTitle}>Unable to load invoice</h2>
+          <p className={styles.stateMessage}>
+            {(error as Error | null)?.message ||
+              "An error occurred while fetching invoice details. Please check your connection and try again."}
+          </p>
+          <div className={styles.stateActions}>
+            <Button
+              title="Try Again"
+              color="primary"
+              onClick={() => setRetryCount((prev) => prev + 1)}
+            />
+            <Button
+              title="Back to Invoices"
+              color="outline"
+              onClick={() => navigate("/logistics/invoices")}
+            />
+          </div>
+        </div>
       </div>
     );
   }
@@ -269,7 +353,7 @@ const LogisticsInvoiceDetails = () => {
     Description: displayValue(description),
   };
 
-    const actDelDate = invoice.invoiceDateTimeRef?.find((reference) =>
+  const actDelDate = invoice.invoiceDateTimeRef?.find((reference) =>
     Boolean(reference.date),
   )?.date;
 
@@ -308,10 +392,6 @@ const LogisticsInvoiceDetails = () => {
           Home
         </Link>
 
-        <Typography sx={{ color: "#141414", fontSize: "13px" }}>
-          Logistics
-        </Typography>
-
         <Link
           onClick={backToInvoices}
           underline="none"
@@ -326,7 +406,7 @@ const LogisticsInvoiceDetails = () => {
         </Link>
 
         <Typography sx={{ color: "#7b7b7b", fontSize: "13px" }}>
-          View Invoice
+          {invoice.invoiceNumber}
         </Typography>
       </Breadcrumbs>
 

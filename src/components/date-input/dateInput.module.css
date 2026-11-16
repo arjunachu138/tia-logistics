@@ -17,3 +17,168 @@
 .required {
   color: var(--color-error);
 }
+
+/* =================================
+   TIME PICKER
+================================= */
+
+/* Time picker container */
+:global(.date-input-picker-popper .MuiMultiSectionDigitalClock-root) {
+  padding: 4px;
+}
+
+/* Time columns */
+:global(.date-input-picker-popper .MuiMultiSectionDigitalClockSection-root) {
+  padding: 4px;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  box-sizing: border-box;
+}
+
+/* Time options */
+:global(.date-input-picker-popper .MuiMultiSectionDigitalClockSection-item) {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  padding: 0;
+  margin: 3px auto;
+
+  border-radius: 50% !important;
+
+  font-size: 14px !important;
+  font-weight: 400;
+  color: var(--color-text-primary) !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Time hover */
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-item:not(.Mui-selected):hover
+) {
+  background-color: var(--color-primary-lighter) !important;
+  color: var(--color-text-primary) !important;
+  border-radius: 50% !important;
+}
+
+/* Selected time */
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-item.Mui-selected
+) {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  font-weight: 500;
+}
+
+/* Selected time hover */
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-item.Mui-selected:hover
+) {
+  background-color: var(--color-primary-hover) !important;
+  color: #fff !important;
+}
+
+/* =================================
+   TIME PICKER SCROLLBAR
+================================= */
+
+/* Chrome, Edge and Safari */
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar
+) {
+  width: 4px;
+}
+
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar-thumb
+) {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+:global(
+  .date-input-picker-popper
+    .MuiMultiSectionDigitalClockSection-root::-webkit-scrollbar-thumb:hover
+) {
+  background: #999;
+}
+
+/* Normal calendar day */
+:global(.MuiPickerDay-root) {
+  color: var(--color-text-primary) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  border-radius: 50% !important;
+}
+
+/* Hover */
+:global(.MuiPickerDay-root:not(.Mui-selected):not(.Mui-disabled):hover) {
+  background-color: var(--color-primary-lighter) !important;
+  color: var(--color-text-primary) !important;
+}
+
+/* Selected day */
+:global(.MuiPickerDay-root.Mui-selected) {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+}
+
+/* Selected day hover */
+:global(.MuiPickerDay-root.Mui-selected:hover) {
+  background-color: var(--color-primary-hover) !important;
+  color: #ffffff !important;
+}
+
+/* Today */
+:global(.MuiPickerDay-root.MuiPickersDay-today:not(.Mui-selected)) {
+  border: 1px solid var(--color-primary) !important;
+}
+
+/* Disabled dates */
+:global(.MuiPickerDay-root.Mui-disabled) {
+  color: var(--color-text-secondary) !important;
+  opacity: 0.45;
+}
+
+/* Cancel and OK buttons */
+:global(.MuiPickersLayout-actionBar .MuiButton-root) {
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  border-radius: 6px !important;
+  padding: 6px 14px !important;
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Cancel button */
+:global(.MuiPickersLayout-actionBar .MuiButton-root:first-of-type) {
+  color: var(--color-text-secondary) !important;
+}
+
+/* OK button */
+:global(.MuiPickersLayout-actionBar .MuiButton-root:last-of-type) {
+  color: var(--color-primary) !important;
+}
+
+/* Hover effects */
+:global(.MuiPickersLayout-actionBar .MuiButton-root:first-of-type:hover) {
+  background-color: var(--color-primary-lighter) !important;
+}
+
+:global(.MuiPickersLayout-actionBar .MuiButton-root:last-of-type:hover) {
+  background-color: var(--color-primary-lighter) !important;
+}

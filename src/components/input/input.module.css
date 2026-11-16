@@ -50,7 +50,10 @@
 
   font-family: inherit;
   font-size: var(--font-size-sm);
-  color: var(--text-primary);
+  color: var(--color-text-primary);
+}
+.readOnly {
+  color: var(--color-text-secondary);
 }
 
 .input::placeholder {

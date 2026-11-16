@@ -56,6 +56,22 @@
   border-color: var(--color-filter-active-border);
 }
 
+.filterBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
 .toolbarLeft {
   display: flex;
   position: relative;
